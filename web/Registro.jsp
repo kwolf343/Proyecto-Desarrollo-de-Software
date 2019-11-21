@@ -55,6 +55,7 @@
                             <ul>
                                 <input id="boton" type="submit" value="Registrarme">
                                 vvvvvvvv
+                                zzzzzzzz
                             </ul>
                         </div>
                     </form>
