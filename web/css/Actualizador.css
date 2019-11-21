@@ -1,0 +1,9 @@
+.boton input{
+    padding: 5%;
+}
+.actualiza{
+    background: rgb(43,54,86);
+    color: #fff;
+    font-weight: bold;
+    padding: 5%;
+}

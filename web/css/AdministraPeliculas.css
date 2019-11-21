@@ -1,0 +1,52 @@
+.pelis ul li{
+    float: left;
+    padding: 0.5%;
+    margin: 0 0.25%;
+    background: rgb(169,165,105);
+    color: #fff;
+}
+.numero{
+    width: 4%;
+}
+.ti{
+    width: 48%;
+}
+.clasificacion, .fecha, .genero{
+    width: 12%;
+}
+.Minfo{
+    width: 9%;
+}
+.pelicul ul li{
+    float: left;
+    padding: 0.5%;
+    margin: 0 0.25%;
+    background: #fff;
+}
+.pelicul .Minfo:hover{
+    background: rgb(220,218,194);
+}
+.contener{
+    background: #fff;
+    padding: 2%;
+}
+.contener2{
+    background: white;
+}
+.contener2 a :hover{
+    background: rgb(220,218,194);
+}
+.actualizador{
+    margin-top: 15%;
+    padding: 5%;
+    background: rgb(43,54,86);
+}
+.actualizador a{
+    color: #fff;
+}
+.actualizador:hover{
+    background: rgb(169,165,105);
+}
+.tiempo input{
+    width: 15%;
+}
