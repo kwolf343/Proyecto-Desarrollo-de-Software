@@ -13,14 +13,13 @@ import java.util.logging.Logger;
 
 public class CTipodeboletos {
      public CTipodeboletos(){}
-     public void InsertarTipodeboletos(int id, String F, String T, Double precio){
+     public void InsertarTipodeboletos(String F, String T, Double precio){
          DecimalFormat df = new DecimalFormat("#.00");
          String p = String.valueOf(df.format(precio));
          try {
             ConexionPool con = new ConexionPool();
             con.conectar();
             Tipodeboletos tb = new Tipodeboletos();
-            tb.setIdtipodeboleto(id);
             tb.setFormato(F);
             tb.setTipo(T);
             tb.setPrecio(p);
@@ -75,9 +74,29 @@ public class CTipodeboletos {
         }
         return tb;
     }
-     public void ActualizarTipodeboletos(int id, String F, String T, double P){
-         BorrarTipodeboletos(id);
-         InsertarTipodeboletos(id, F, T, P);
+     public void ActualizarTipodeboletos(int id, String F, String T, double precio){
+        DecimalFormat df = new DecimalFormat("#.00");
+        String p = String.valueOf(df.format(precio));
+        try {
+            ConexionPool con = new ConexionPool(); 
+            con.conectar();
+            Tipodeboletos tb = new Tipodeboletos();
+            tb.setFormato(F);
+            tb.setTipo(T);
+            tb.setPrecio(p);
+            Operaciones.abrirConexion(con);
+            Operaciones.iniciarTransaccion();
+            tb = Operaciones.actualizar(id, tb);
+            Operaciones.commit();
+            } catch(Exception ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null,ex);
+            } finally {
+            try {
+            Operaciones.cerrarConexion();
+            } catch (SQLException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE,null, ex);
+            }
+            }
      }
      
      public List<Tipodeboletos> MostrarTodoTipodeboletos(){
