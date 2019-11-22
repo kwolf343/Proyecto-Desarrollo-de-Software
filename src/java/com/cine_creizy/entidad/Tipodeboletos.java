@@ -6,6 +6,7 @@ import com.cine_creizy.anotaciones.PrimaryKey;
 @Entity(table = "tipodeboletos")
 public class Tipodeboletos {
     @PrimaryKey
+    @AutoIncrement
     private int idtipodeboleto;
     private String formato;
     private String tipo;
