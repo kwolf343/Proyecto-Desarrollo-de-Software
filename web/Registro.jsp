@@ -54,7 +54,6 @@
                         <div class="botones">
                             <ul>
                                 <input id="boton" type="submit" value="Registrarme">
-                                puto
                             </ul>
                         </div>
                     </form>
