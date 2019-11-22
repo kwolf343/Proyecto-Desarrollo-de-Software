@@ -6,7 +6,7 @@ import com.cine_creizy.anotaciones.PrimaryKey;
 @Entity(table = "compraboletos")
 public class Compraboletos {
      @PrimaryKey
-    @AutoIncrement
+     @AutoIncrement
      private int idcompraboletos;
      private String codigoboletos;
      private int cantidadboletos;
