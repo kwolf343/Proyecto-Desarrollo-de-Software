@@ -16,7 +16,7 @@ public class Boleto extends HttpServlet {
         String accion = request.getParameter("accion");
         HttpSession sesion = request.getSession();
         CTipodeboletos tb = new CTipodeboletos();
-        if(accion.equals("Modificar")){
+        if(accion.equals("Modificar")){        
             int id = (int)sesion.getAttribute("IdTipoBoletos");
             sesion.setAttribute("FormatoTipoBoletos",tb.MostrarTipodeboletos(id).getFormato());
             sesion.setAttribute("TipoTipoBoletos",tb.MostrarTipodeboletos(id).getTipo());
@@ -28,7 +28,7 @@ public class Boleto extends HttpServlet {
             response.sendRedirect("Principal?op=6");
         }
         if(accion.equals("ActualizaBoleto")){
-            int id = (int)sesion.getAttribute("IdTipoBoletos");
+            int id = (int)sesion.getAttribute("IdTipoBoletos");        
             String precio = request.getParameter("precio");
             double p = Double.parseDouble(precio);
             String f = (String)sesion.getAttribute("FormatoTipoBoletos");
@@ -37,16 +37,10 @@ public class Boleto extends HttpServlet {
             response.sendRedirect("Principal?op=12");
         }
         if(accion.equals("AgregaBoleto")){
-            int num = 1;
-            for(int i=0; i<tb.MostrarTodoTipodeboletos().size();i++){
-                if(num==tb.MostrarTodoTipodeboletos().get(i).getIdtipodeboleto()){
-                    num++;
-                }
-            }
             String formato = request.getParameter("formato");
             String tipo = request.getParameter("tipo");
             Double precio = Double.parseDouble(request.getParameter("precio"));
-            tb.InsertarTipodeboletos(num,formato, tipo, precio);
+            tb.InsertarTipodeboletos(formato, tipo, precio);
             response.sendRedirect("Principal?op=6");
         }
     }
