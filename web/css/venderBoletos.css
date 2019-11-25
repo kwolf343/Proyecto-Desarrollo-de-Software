@@ -13,12 +13,30 @@ h1{
     color: #fff;
     padding: 1.5%;
 }
-.a form, .a h3{
+.a .f1 form, .a .f1 h3{
     float: left;
 }
-.a form{
+.a .f1 form{
     margin-left: 1%;
 }
 .a h2{
     color: rgb(169,165,105);
+}
+.f2 ul li{
+    float: left;
+    margin: 0 0.25%;
+    padding: 0.75%;
+}
+.bol{
+    width: 59%;
+}
+.pre, .cant, .add{
+    width: 13%;
+}
+.arriba ul li{
+    background: rgb(43,54,86);
+    color: #fff;
+}
+.cant input{
+    width: 100%;
 }

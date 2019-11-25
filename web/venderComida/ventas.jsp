@@ -36,7 +36,7 @@
                             <li class="c">${comer.getNombre()}</li>
                             <li class="d"><center>$${comer.getPrecio()}</center></li>
                             <li class="d"><center>${comer.getExistencia()}</center></li>
-                            <li class="e"><center><input type="number" name="cantidad" min="0" max="${comer.getExistencia()}" required></center></li>
+                            <li class="e"><center><input type="number" name="cantidad" min="1" max="${comer.getExistencia()}" required></center></li>
                             <li class="f"><center><input type="submit" value="agregar" name="Comprar"/></center></li>
                         </ul>
                         </form>
