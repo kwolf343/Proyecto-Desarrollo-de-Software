@@ -10,8 +10,10 @@ import com.cine_creizy.CRUD.CTipodeboletos;
 import com.cine_creizy.CRUD.CUsuario;
 import com.cine_creizy.entidad.Menu;
 import com.cine_creizy.entidad.Paises;
+import com.cine_creizy.entidad.Proyecciones;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import javax.servlet.ServletException;
@@ -41,6 +43,7 @@ public class Principal extends HttpServlet {
             if(op!=null){
                 List<Menu> PermisosAsignados = per.stream().filter(field -> field.getIdpadre()==Integer.parseInt(op)).collect(Collectors.toList());
                 request.setAttribute("PermisosAsignados", PermisosAsignados);
+            if(op.equals("1")){request.getRequestDispatcher("venderBoletos/ventas.jsp").forward(request, response);}
             if(op.equals("2")){request.getRequestDispatcher("venderComida/ventas.jsp").forward(request, response);}
             if(op.equals("3")){request.getRequestDispatcher("peliculas/AdministrarPeliculas.jsp").forward(request, response);}
             if(op.equals("4")){request.getRequestDispatcher("cartelera/AdministrarCartelera.jsp").forward(request, response);}
@@ -92,6 +95,59 @@ public class Principal extends HttpServlet {
         sesion.setAttribute("estaPelicula",peli);
         sesion.setAttribute("estaSala",s);
         sesion.setAttribute("estaComida",c);
+        Proyeccion(request, response);
+    }
+    private void Proyeccion(HttpServletRequest request, HttpServletResponse response){
+        HttpSession sesion = request.getSession();
+        CProyecciones proyeccion = new CProyecciones();
+        Proyecciones p = new Proyecciones();
+        int cont =1;
+        Proyecciones pro[] = new Proyecciones[proyeccion.MostrarTodoProyecciones().size()];
+        for(int i=0; i<proyeccion.MostrarTodoProyecciones().size();i++){
+            pro[i] = proyeccion.MostrarTodoProyecciones().get(i);
+        }
+        for(int i=0; i<proyeccion.MostrarTodoProyecciones().size();i++){
+            for(int j=0; j<proyeccion.MostrarTodoProyecciones().size()-1;j++){
+                if(pro[j].getIdpelicula()>pro[j+1].getIdpelicula()){
+                    p = pro[j];
+                    pro[j] = pro[j+1];
+                    pro[j+1] = p;
+                }
+            }
+        }
+        for(int i=1; i<proyeccion.MostrarTodoProyecciones().size();i++){
+            if(pro[i-1].getIdpelicula()!=pro[i].getIdpelicula()){
+                cont++;
+            }
+        }
+        sesion.setAttribute("contadorabc", cont);
+        sesion.setAttribute("Proyecction2", pro);
+        int[] numeros = new int[cont];
+        int cont2=0;
+        for(int i=0; i<cont;i++){
+            numeros[i]=1;
+        }
+        int c=0;
+        for(int i=0; i<proyeccion.MostrarTodoProyecciones().size()-1;i++){
+            if(pro[i+1].getIdpelicula()==pro[i].getIdpelicula()){
+                numeros[c]=numeros[c]+1;
+            }
+            else{
+                c++;
+            }
+        }
+        Proyecciones[][] matriz = new Proyecciones[cont][];
+        for(int i=0; i<cont;i++){
+            matriz[i] = new Proyecciones[numeros[i]];
+        }
+        int contar=0;
+        for(int i=0; i<cont; i++){
+            for(int j=0; j<numeros[i];j++){
+                matriz[i][j] = pro[contar];
+                contar++;
+            }
+        }
+        sesion.setAttribute("ListadoPrueba",matriz);
     }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
