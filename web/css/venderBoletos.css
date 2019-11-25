@@ -40,3 +40,27 @@ h1{
 .cant input{
     width: 100%;
 }
+.a h2{
+    float: left;
+}
+.temas{
+    display: flex;
+    justify-content: space-between;
+}
+.color{
+    background: red;
+}
+.color2{
+    background: green;
+}
+.punto{
+    color:#fff;
+}
+.dos{
+    margin-top: 2%;
+    display: flex;
+    justify-content: space-between;
+}
+.dos form input{
+    padding: 7% 0;
+}

@@ -95,6 +95,7 @@ public class Principal extends HttpServlet {
         sesion.setAttribute("estaPelicula",peli);
         sesion.setAttribute("estaSala",s);
         sesion.setAttribute("estaComida",c);
+        sesion.setAttribute("estaProyeccion",pro);
         Proyeccion(request, response);
     }
     private void Proyeccion(HttpServletRequest request, HttpServletResponse response){

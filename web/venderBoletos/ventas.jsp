@@ -18,11 +18,11 @@
             <%@include file="/MenuPrincipal.jsp"%>
         </div>
         <div class="derecho">
-            <div class="a">
+            <div class="col-12 a">
                 <c:if test="${HoraBoletos!=true}">
-                    <div class="f1">
+                    <div class="col-12 f1">
                         <h1>Paso 1</h1><br><br>
-                        <h2>Horarios</h2><br>
+                        <h2>Horarios</h2><br><br>
                         <c:forEach var="i" items="${ListadoPrueba}">
                             <h3>${estaPelicula.MostrarPelicula(i[0].getIdpelicula()).getTitulo()}</h3>
                             <c:forEach var="item2" items="${i}">
@@ -36,15 +36,19 @@
                 </c:if>
                 <!------------------------------------------------------------------------------------------------------------->
                 <c:if test="${TBoletos==true}">
-                    <div class="f2">
+                    <div class="col-12">
+                        <div class="f2 col-12">
                         <h1>Paso 2</h1><br><br>
-                        <h2>Boletos</h2><br>
+                        <div class="temas">
+                            <h2 class="h2">Boletos</h2><h3 class="h22">Pelicula: ${estaPelicula.MostrarPelicula(estaProyeccion.MostrarProyecciones(IdBoleto).getIdpelicula()).getTitulo()}</h3><h3> Horario: ${estaProyeccion.MostrarProyecciones(IdBoleto).getHorainicio()}</h3>
+                        </div>
+                        <br>
                         <div class="arriba">
                             <ul>
                                 <li class="bol"><center>Boletos</center></li>
-                            <li class="pre"><center>Precio</center></li>
-                            <li class="cant"><center>Cantidad</center></li>
-                            <li class="add"><center>Agregar</center></li>
+                                <li class="pre"><center>Precio</center></li>
+                                <li class="cant"><center>Cantidad</center></li>
+                                <li class="add"><center>Agregar</center></li>
                             </ul>
                         </div>
                         <ul>
@@ -58,9 +62,21 @@
                             </c:forEach>
                         </ul>  
                     </div>
-                
+                        <div class="col-12 dos">
+                            <form class="cance" name="ve1" action="VentasBoletos?accion=cancelar" method="POST">
+                            <input type="submit" value="Cancelar" name="Cancelar"/>
+                            </form>
+                            <form class="cance" name="ve2" action="VentasBoletos?accion=siguiente" method="POST">
+                                <input type="submit" value="Siguiente" name="Siguiente"/>
+                            </form>
+                        </div>
+                    </div>
+                    
                 </c:if>
-                    <br><br><br><br><br><br><br><br>
+                <c:if test="${TBoletos==true}">
+                    
+                </c:if>
+                    <br><br>
                     
             </div>
             <div class="b">
