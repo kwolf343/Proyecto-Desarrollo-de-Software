@@ -36,6 +36,10 @@
         <servlet-name>Ventas</servlet-name>
         <servlet-class>com.cine_creizy.control.Ventas</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>VentasBoletos</servlet-name>
+        <servlet-class>com.cine_creizy.control.VentasBoletos</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Principal</servlet-name>
         <url-pattern>/Principal</url-pattern>
@@ -71,6 +75,10 @@
     <servlet-mapping>
         <servlet-name>Ventas</servlet-name>
         <url-pattern>/Ventas</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VentasBoletos</servlet-name>
+        <url-pattern>/VentasBoletos</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

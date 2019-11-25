@@ -1,0 +1,24 @@
+.a{
+    width: 74.5%;
+    background: #fff;
+    padding: 3%;
+}
+.b{
+    width: 24.5%;
+    color: #fff;
+    background: rgb(43,54,86);
+}
+h1{
+    background: rgb(43,54,86);
+    color: #fff;
+    padding: 1.5%;
+}
+.a form, .a h3{
+    float: left;
+}
+.a form{
+    margin-left: 1%;
+}
+.a h2{
+    color: rgb(169,165,105);
+}
