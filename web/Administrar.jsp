@@ -6,18 +6,29 @@
         <link rel="stylesheet" href="css/estilos.css" type="text/css"><link>
         <link rel="stylesheet" href="css/Administracion.css" type="text/css"><link>
         <link rel="stylesheet" href="css/AdministrarUsuarios.css" type="text/css"><link>
+        <link rel="stylesheet" href="css/Administrar.css" type="text/css"><link>
         <title>Cine Creizy</title>
     </head>
     <body>
         <%@include file="user.jsp"%>
         <div class="col-12 titulo">
-            <h2>Cine Creizy</h2>
+          
         </div>
         <div class="izquierdo">
             <%@include file="MenuPrincipal.jsp"%>
         </div>
-        <div class="derecho">
-            <h1>AQUI VA EL LOGO</h1>
+        <div class="derecho" >
+            <div class="contenido"> 
+            <center><img src="imagenes/Logo2.png" alt="" width="100%"></center>
+            <br>
+            <center><h1>¡BIENVENIDOS!</h1></center>
+           <br>
+        <center><p>derechos</p></center>
+    
+            </div>
         </div>
+        
+        
     </body>
+    
 </html>
