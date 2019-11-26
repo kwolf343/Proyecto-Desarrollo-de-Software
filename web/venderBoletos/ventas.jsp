@@ -79,10 +79,30 @@
                 <c:if test="${ABoletos==true}">
                     <div class="col-12 tres">
                         <div class="col-12 f3">
-                            <h1>Paso 3</h1><br><br>
-                            <h2>Asientos</h2><br><br>
-                            <div class="col-12">
-                                
+                        <h1>Paso 3</h1><br><br>
+                        <h2>Asientos</h2><br><br>
+                            <div class="col-12 columnas">
+                                <div class="aLaIzquierda"></div>
+                                <div class="alCentro">
+                                     <c:forEach var="i" items="${Listado3}">
+                                         <div class="asiento">
+                                             <center>
+                                                 ${i.getAsiento()}<br>
+                                                 <input type="checkbox" name="check" value="${i.getIdasiento()}">
+                                             </center>
+                                         </div> 
+                                     </c:forEach>
+                                    <br>
+                                </div>
+                                <div class="aLaDerecha"></div>
+                             </div>
+                            <div class="formulario3 col-12">
+                                <form class="cance" name="ve13" action="VentasBoletos?accion=cancelar2" method="POST">
+                                    <input type="submit" value="Cancelar" name="Cancelar"/>
+                                </form>
+                                <form class="cance" name="ve14" action="VentasBoletos?accion=siguiente2" method="POST">
+                                    <input type="submit" value="Siguiente" name="Siguiente"/>
+                                </form>
                             </div>
                         </div>
                     </div>

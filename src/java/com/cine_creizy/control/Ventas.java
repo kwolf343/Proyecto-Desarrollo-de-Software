@@ -50,10 +50,8 @@ public class Ventas extends HttpServlet {
         }
         if(accion.equals("IniciarVenta")){
             sesion.setAttribute("MostrarCompra", true);
-            String N = (String) sesion.getAttribute("Nombre");
-            String A = (String) sesion.getAttribute("Apellido");
-            
-            vc.InsertarVentacomida("0",N+" "+A);
+            String N = (String) sesion.getAttribute("Nombres");
+            vc.InsertarVentacomida("0",N);
             int n=0;
             for(int i=0; i<vc.MostrarTodoVentacomida().size();i++){
                 n=vc.MostrarTodoVentacomida().get(i).getIdventacomida();

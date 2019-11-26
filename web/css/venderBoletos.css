@@ -73,3 +73,34 @@
 .tres{
     padding: 2%;
 }
+.asiento{
+    background: rgb(195,195,195);
+    width: 8%;
+    margin: 1%;
+    padding: 0.5%;
+    float: left;
+    border-radius: 25%;
+}
+.columnas{
+    display: flex;
+    align-items: center;
+    float: right;
+}
+.alCentro{
+    border-radius: 2%;
+    padding: 1%;
+    width: 80%;
+    background: rgb(43,54,86);
+}
+.aLaIzquierda, .aLaDerecha{
+    width: 10%;
+}
+.formulario3{
+    display: flex;
+    justify-content: space-around;
+    background: #fff;
+}
+.formulario3 input{
+    margin-top: 25%;
+    padding: 25%;
+}
