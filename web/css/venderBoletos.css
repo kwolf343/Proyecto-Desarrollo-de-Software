@@ -1,31 +1,55 @@
+.a,.b{
+    float: left;
+    margin: 0.25%;
+}
 .a{
     width: 74.5%;
     background: #fff;
-    padding: 3%;
 }
 .b{
     width: 24.5%;
-    color: #fff;
+}
+.color1{
+    background: red;
+}
+.color2{
+    background: green;
+}
+.uno{
+    padding: 2%;
+}
+.f1 h1, .f2 h1, .f3 h1{
     background: rgb(43,54,86);
-}
-h1{
-    background: rgb(43,54,86);
+    padding: 1%;
     color: #fff;
-    padding: 1.5%;
 }
-.a .f1 form, .a .f1 h3{
-    float: left;
-}
-.a .f1 form{
-    margin-left: 1%;
-}
-.a h2{
+.f1 h2, .f2 h2, .f3 h2{
     color: rgb(169,165,105);
 }
-.f2 ul li{
+.f1 form input{
     float: left;
-    margin: 0 0.25%;
+    margin: 0 0.5%;
+}
+.f1 h3{
+    float: left;
+}
+.dos{
+    padding: 2%;
+}
+.temas{
+    display: flex;
+    justify-content: space-between;
+}
+.arriba ul li{
+    float: left;
+    background: rgb(43,54,86);
+    color: #fff;
     padding: 0.75%;
+    margin: 0 0.25%;
+}
+.abajo ul li{
+    background: #fff;
+    color: rgb(43,54,86);
 }
 .bol{
     width: 59%;
@@ -33,34 +57,19 @@ h1{
 .pre, .cant, .add{
     width: 13%;
 }
-.arriba ul li{
-    background: rgb(43,54,86);
-    color: #fff;
+.blanco li{
+    background: #fff;
 }
 .cant input{
     width: 100%;
 }
-.a h2{
+.botones input{
     float: left;
 }
-.temas{
-    display: flex;
-    justify-content: space-between;
+.botones input{
+    padding: 2%;
+    margin: 5%;
 }
-.color{
-    background: red;
-}
-.color2{
-    background: green;
-}
-.punto{
-    color:#fff;
-}
-.dos{
-    margin-top: 2%;
-    display: flex;
-    justify-content: space-between;
-}
-.dos form input{
-    padding: 7% 0;
+.tres{
+    padding: 2%;
 }

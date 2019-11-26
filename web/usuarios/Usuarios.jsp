@@ -1,3 +1,4 @@
+<%@include file="/restringir.jsp"%>
 <form name="borrau" action="Usuario?accion=BorrarUsuario" method="POST">
 <div class="usuario">
     <div class="arriba">

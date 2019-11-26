@@ -1,5 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%
+<% HttpSession sesion = request.getSession();
+        if(sesion.getAttribute("Usuario")==null){
+            request.getRequestDispatcher("/index.jsp").forward(request, response);
+        }
         response.setHeader("Cache-Control","no-cache");
         response.setHeader("Cache-Control","no-store");
         response.setHeader("Pragma","no-cache");

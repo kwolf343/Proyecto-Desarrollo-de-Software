@@ -9,7 +9,6 @@ public class Usuario {
     private String idusuario;
     private String nombres;
     private String apellidos;
-    private String targeta;
     private String email;
     private String clave;
     private int idpais;
@@ -17,11 +16,10 @@ public class Usuario {
     
     public Usuario(){}
 
-    public Usuario(String idusuario, String nombres, String apellidos, String targeta,String email, String clave, int idpais, int idrol) {
+    public Usuario(String idusuario, String nombres, String apellidos, String email, String clave, int idpais, int idrol) {
         this.idusuario = idusuario;
         this.nombres = nombres;
         this.apellidos = apellidos;
-        this.targeta = targeta;
         this.email = email;
         this.clave = clave;
         this.idpais = idpais;
@@ -50,14 +48,6 @@ public class Usuario {
 
     public void setApellidos(String apellidos) {
         this.apellidos = apellidos;
-    }
-    
-    public String getTargeta() {
-        return targeta;
-    }
-
-    public void setTargeta(String targeta) {
-        this.targeta = targeta;
     }
 
     public String getEmail() {

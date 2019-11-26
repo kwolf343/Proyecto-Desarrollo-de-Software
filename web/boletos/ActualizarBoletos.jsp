@@ -1,3 +1,4 @@
+<%@include file="/restringir.jsp"%>
 <%@page import="com.cine_creizy.CRUD.CTipodeboletos"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>

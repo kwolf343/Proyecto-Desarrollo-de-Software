@@ -9,6 +9,7 @@ public class Ventacomida {
     @PrimaryKey
     @AutoIncrement
     private int idventacomida;
+    private String vendedor;
     private String total;
     public Ventacomida(){}
 
@@ -25,6 +26,14 @@ public class Ventacomida {
         this.idventacomida = idventacomida;
     }
 
+    public String getVendedor() {
+        return vendedor;
+    }
+
+    public void setVendedor(String vendedor) {
+        this.vendedor = vendedor;
+    }
+    
     public String getTotal() {
         return total;
     }

@@ -33,7 +33,7 @@ public class Registro extends HttpServlet {
         String pais = request.getParameter("pais");
         int idpais = Integer.parseInt(pais);
         CUsuario u = new CUsuario();
-        u.InsertarUsuario(usuario, nombre, apellido, targeta, email, clave, idpais, 2);
+        u.InsertarUsuario(usuario, nombre, apellido, email, clave, idpais, 2);
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             out.println("<!DOCTYPE html>");

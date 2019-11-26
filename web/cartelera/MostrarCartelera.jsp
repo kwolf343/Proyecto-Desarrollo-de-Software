@@ -1,4 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@include file="/restringir.jsp"%>
+<%@include file="/restringir.jsp"%>
 <!DOCTYPE html>
 <html>
     <head>

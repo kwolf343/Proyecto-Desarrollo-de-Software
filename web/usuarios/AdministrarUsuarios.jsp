@@ -1,13 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<% HttpSession sesion = request.getSession();
-        if(sesion.getAttribute("Usuario")==null){
-            request.getRequestDispatcher("/index.jsp").forward(request, response);
-        }
-        response.setHeader("Cache-Control","no-cache");
-        response.setHeader("Cache-Control","no-store");
-        response.setHeader("Pragma","no-cache");
-        response.setDateHeader("Expires",0);
-        %>
+<%@include file="/restringir.jsp"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -28,5 +20,6 @@
         <div class="derecho">
             <%@include file="Usuarios.jsp"%>
         </div>
+        
     </body>
 </html>

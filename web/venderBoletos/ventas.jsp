@@ -1,4 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,14 +11,15 @@
     <body>
         <%@include file="/user.jsp"%>
         <div class="col-12 titulo">
-            <h2>Vender Boletos</h2>
+            <h2>Vender Comida</h2>
         </div>
         <div class="izquierdo">
             <%@include file="/MenuPrincipal.jsp"%>
         </div>
         <div class="derecho">
-            <div class="col-12 a">
+            <div class="a"> 
                 <c:if test="${HoraBoletos!=true}">
+                <div class="col-12 uno">
                     <div class="col-12 f1">
                         <h1>Paso 1</h1><br><br>
                         <h2>Horarios</h2><br><br>
@@ -33,55 +33,62 @@
                             <br><br>
                         </c:forEach>
                     </div>
+                </div>
                 </c:if>
-                <!------------------------------------------------------------------------------------------------------------->
                 <c:if test="${TBoletos==true}">
-                    <div class="col-12">
-                        <div class="f2 col-12">
+                    <div class="col-12 dos">
+                    <div class="col-12 f2">
                         <h1>Paso 2</h1><br><br>
                         <div class="temas">
                             <h2 class="h2">Boletos</h2><h3 class="h22">Pelicula: ${estaPelicula.MostrarPelicula(estaProyeccion.MostrarProyecciones(IdBoleto).getIdpelicula()).getTitulo()}</h3><h3> Horario: ${estaProyeccion.MostrarProyecciones(IdBoleto).getHorainicio()}</h3>
                         </div>
-                        <br>
+                        <br><br>
                         <div class="arriba">
-                            <ul>
+                            <ul class="ar">
                                 <li class="bol"><center>Boletos</center></li>
                                 <li class="pre"><center>Precio</center></li>
                                 <li class="cant"><center>Cantidad</center></li>
                                 <li class="add"><center>Agregar</center></li>
                             </ul>
+                            <div class="abajo">
+                                <ul>
+                                    <c:forEach var="i" items="${ListaTipodeBoletos}"> 
+                                        <form class="blanco" name="ventaB" action="VentasBoletos?accion=hola" method="POST">
+                                            <li class="bol">${i.getFormato()}       ${i.getTipo()}</li>
+                                            <li class="pre"><center>$${i.getPrecio()}</center></li>
+                                            <li class="cant"><center><input type="number" name="cantidad" min="1" required></center></li>
+                                            <li class="add"><center><input type="submit" value="agregar" name="Comprar"/></center></li>
+                                        </form>
+                                    </c:forEach>
+                                </ul>
+                            </div> 
                         </div>
-                        <ul>
-                            <c:forEach var="i" items="${ListaTipodeBoletos}"> 
-                                <form name="ventaB" action="VentasBoletos?accion=hola" method="POST">
-                                    <li class="bol">${i.getFormato()}       ${i.getTipo()}</li>
-                                    <li class="pre"><center>${i.getPrecio()}</center></li>
-                                    <li class="cant"><center><input type="number" name="cantidad" min="1" required></center></li>
-                                    <li class="add"><center><input type="submit" value="agregar" name="Comprar"/></center></li>
-                                </form>
-                            </c:forEach>
-                        </ul>  
-                    </div>
-                        <div class="col-12 dos">
-                            <form class="cance" name="ve1" action="VentasBoletos?accion=cancelar" method="POST">
-                            <input type="submit" value="Cancelar" name="Cancelar"/>
+                        <div>
+                        </div>
+                        <div class="botones">
+                            <form class="cance" name="ve11" action="VentasBoletos?accion=cancelar" method="POST">
+                                <input type="submit" value="Cancelar" name="Cancelar"/>
                             </form>
-                            <form class="cance" name="ve2" action="VentasBoletos?accion=siguiente" method="POST">
+                            <form class="cance" name="ve12" action="VentasBoletos?accion=siguiente" method="POST">
                                 <input type="submit" value="Siguiente" name="Siguiente"/>
                             </form>
                         </div>
                     </div>
-                    
+                    </div>
                 </c:if>
-                <c:if test="${TBoletos==true}">
-                    
+                <c:if test="${ABoletos==true}">
+                    <div class="col-12 tres">
+                        <div class="col-12 f3">
+                            <h1>Paso 3</h1><br><br>
+                            <h2>Asientos</h2><br><br>
+                            <div class="col-12">
+                                
+                            </div>
+                        </div>
+                    </div>
                 </c:if>
-                    <br><br>
-                    
             </div>
-            <div class="b">
-                
-            </div>
-        </div>    
+            <div class="b color2">bb</div>
+        </div>
     </body>
 </html>

@@ -19,6 +19,17 @@ public class VentasBoletos extends HttpServlet {
             sesion.setAttribute("TBoletos",true);
             response.sendRedirect("Principal?op=1");
         }
+        if(accion.equals("cancelar")){
+            sesion.setAttribute("HoraBoletos",false);
+            sesion.setAttribute("TBoletos",false);
+            response.sendRedirect("Principal?op=1");
+        }
+        if(accion.equals("siguiente")){
+            sesion.setAttribute("TBoletos",false);
+            sesion.setAttribute("ABoletos",true);
+            response.sendRedirect("Principal?op=1");
+            
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
