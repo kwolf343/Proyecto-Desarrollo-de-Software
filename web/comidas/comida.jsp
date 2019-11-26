@@ -1,3 +1,4 @@
+<%@include file="/restringir.jsp"%>
 <div class="comidas col-12">
     <ul>
         <li class="id"><center>ID</center></li>

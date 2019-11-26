@@ -1,3 +1,4 @@
+<%@include file="/restringir.jsp"%>
 <h3>Id de la pelicula: ${IdPelicula}</h3>
 <br>
 <h3>Titulo: ${TituloPeli}</h3>

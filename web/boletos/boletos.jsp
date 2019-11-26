@@ -1,3 +1,4 @@
+<%@include file="/restringir.jsp"%>
 <div class="uno">
     <ul>
     <li class="i"><center>Id</center></li>
