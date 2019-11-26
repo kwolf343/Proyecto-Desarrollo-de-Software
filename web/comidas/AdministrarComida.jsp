@@ -19,7 +19,6 @@
         </div>
         <div class="derecho">
             <%@include file="comida.jsp"%>
-            
         </div>
     </body>
 </html>

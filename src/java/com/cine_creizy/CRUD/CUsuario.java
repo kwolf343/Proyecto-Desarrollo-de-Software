@@ -16,7 +16,7 @@ import java.util.logging.Logger;
 public class CUsuario {
     public CUsuario(){}
 
-    public void InsertarUsuario(String id, String nombre, String apellido, String target, String mail, String contra, int pais, int rol){
+    public void InsertarUsuario(String id, String nombre, String apellido, String mail, String contra, int pais, int rol){
         Hash h = new Hash();
         try {
             ConexionPool con = new ConexionPool();
@@ -25,7 +25,6 @@ public class CUsuario {
             u.setIdusuario(id);
             u.setNombres(nombre);
             u.setApellidos(apellido);
-            u.setTargeta(target);
             u.setEmail(mail);
             u.setClave(h.generarHash(contra,SHA256));
             u.setIdpais(pais);
@@ -81,67 +80,9 @@ public class CUsuario {
         }
         return u;
     }
-    public void ActualizarUsuario(String id, int numero, String dato){
-        Usuario user = new Usuario();
-        user = MostrarUsuario(id);
-        Hash h = new Hash();
-        String n = user.getNombres();
-        String a = user.getApellidos();
-        String t = user.getTargeta();
-        String e = user.getEmail();
-        String c = user.getClave();
-        int p = user.getIdpais();
-        int r = user.getIdrol();
-        // 1: Nombre
-        // 2: Apellido
-        // 3: Targeta
-        // 4: Email
-        // 5: Clave
-            switch(numero){
-                case 1:
-                    BorrarUsuario(id);
-                    InsertarUsuario(id,dato,a,t,e,c,p,r);
-                    break;
-                case 2:
-                    BorrarUsuario(id);
-                    InsertarUsuario(id,n,dato,t,e,c,p,r);
-                    break;
-                case 3:
-                    BorrarUsuario(id);
-                    InsertarUsuario(id,n,a,dato,e,c,p,r);
-                    break;
-                case 4:
-                    BorrarUsuario(id);
-                    InsertarUsuario(id,n,a,t,dato,c,p,r);
-                    break;
-                case 5:
-                    BorrarUsuario(id);
-                    InsertarUsuario(id,n,a,t,e,h.generarHash(dato,SHA256),p,r);
-                    break;
-            }
-    }
-    public void ActualizarUsuario(String id, int numero, int dato){
-        Usuario user = new Usuario();
-        user = MostrarUsuario(id);
-        String n = user.getNombres();
-        String a = user.getApellidos();
-        String t = user.getTargeta();
-        String e = user.getEmail();
-        String c = user.getClave();
-        int p = user.getIdpais();
-        int r = user.getIdrol();
-        // 6: pais
-        // 7: rol
-            switch(numero){
-                case 6:
-                    BorrarUsuario(id);
-                    InsertarUsuario(id,n,a,t,e,c,dato,r);
-                    break;
-                case 7:
-                    BorrarUsuario(id);
-                    InsertarUsuario(id,n,a,t,e,c,p,dato);
-                    break;
-            }
+    public void ActualizarUsuario(String id, String nombre, String apellido, String mail, String contra, int pais, int rol){
+        BorrarUsuario(id);
+        InsertarUsuario(id, nombre, apellido, mail, contra, pais, rol);
     }
     public List<Usuario> MostrarTodoUsuario(){
         ArrayList<Usuario> listado = new ArrayList<Usuario>();

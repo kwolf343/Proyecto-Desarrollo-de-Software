@@ -12,12 +12,13 @@ import java.util.logging.Logger;
 
 public class CVentacomida {
     public CVentacomida(){}
-    public void InsertarVentacomida(String total){
+    public void InsertarVentacomida(String total, String vendedor){
         try {
             ConexionPool con = new ConexionPool();
             con.conectar();
             Ventacomida vc = new Ventacomida();
             vc.setTotal(total);
+            vc.setVendedor(vendedor);
             Operaciones.abrirConexion(con);
             Operaciones.iniciarTransaccion();
             vc = Operaciones.insertar(vc);
@@ -69,12 +70,13 @@ public class CVentacomida {
         }
         return vc;
     }
-    public void ActualizarVentacomida(int id, String total){
+    public void ActualizarVentacomida(int id, String total, String vendedor){
         try {
             ConexionPool con = new ConexionPool(); 
             con.conectar();
             Ventacomida vc = new Ventacomida();
             vc.setTotal(total);
+            vc.setVendedor(vendedor);
             Operaciones.abrirConexion(con);
             Operaciones.iniciarTransaccion();
             vc = Operaciones.actualizar(id, vc);
