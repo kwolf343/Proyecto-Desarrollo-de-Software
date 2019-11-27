@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="css/venderBoletos.css" type="text/css"><link>
         <title>Vender Boletos</title>
     </head>
+    
     <body>
         <%@include file="/user.jsp"%>
         <div class="col-12 titulo">
@@ -76,6 +77,27 @@
                     </div>
                     </div>
                 </c:if>
+                <script type="text/javascript">
+                    var contador = 0;
+                    function funcion() {
+                    for (var i=0;i < document.forms["venderBoleto"].elements.length;i++) {
+                    inpt = document.forms[0].elements[i]; 
+                    if (inpt.checked) { 
+                    contador++;
+                    } 
+                    } 
+                    if(contador > 5) {
+                    alert('Has seleccionados demasiados');
+                    contador = 0;
+                    return false;
+                    }
+                    if(contador < 2) {
+                    alert('Has seleccionados pocos');
+                    contador = 0;
+                    return false;
+                    }
+                    }
+                </script>
                 <c:if test="${ABoletos==true}">
                     <div class="col-12 tres">
                         <div class="col-12 f3">
@@ -84,47 +106,25 @@
                             <div class="col-12 columnas">
                                 <div class="aLaIzquierda"></div>
                                 <div class="alCentro">
+                                    <form action="VentasBoletos?accion=vender"  method="post" name="venderBoleto" onsubmit="return funcion();"> 
                                      <c:forEach var="i" items="${Listado3}">
-                                         <div class="asiento">
+                                         <div class="asiento ">
                                              <center>
                                                  ${i.getAsiento()}<br>
                                                  <input type="checkbox" name="check" value="${i.getIdasiento()}">
                                              </center>
-                                         </div> 
+                                         </div>  
                                      </c:forEach>
+                                        <input class="botonC bnt_ col-3" name="Submit2" type="submit" value="Vender" />
+                                    </form>
+                                    <form class="cance" name="ve13" action="VentasBoletos?accion=cancelar2" method="POST">
+                                        <input class="botonC bnt_2 col-3" type="submit" value="Cancelar" name="Cancelar"/>
+                                    </form>
                                     <br>
                                 </div>
                                 <div class="aLaDerecha"></div>
                              </div>
-                            <div class="formulario3 col-12">
-                                <form class="cance" name="ve13" action="VentasBoletos?accion=cancelar2" method="POST">
-                                    <input type="submit" value="Cancelar" name="Cancelar"/>
-                                </form>
-                                <form class="cance" name="ve14" action="VentasBoletos?accion=siguiente2" method="POST">
-                                    <input type="submit" value="Siguiente" name="Siguiente"/>
-                                </form>
-                            </div>
                         <br>
-                        <script language="javascript">
-//VALIDACION CHECKBOX
-function validacion(formu, obj) {
-  limite=2; //limite de checks a seleccionar
-  num=0;
-  if (obj.checked) {
-    for (i=0; ele=document.getElementById(formu).children[i]; i++)
-      if (ele.checked) num++;
-  if (num>limite)
-    obj.checked=false;
-  }
-}  
-</script>
-
-<div id="form1">
-<input type="checkbox" name="check1" onchange="validacion('form1', this)" />
-<input type="checkbox" name="check2" onchange="validacion('form1', this)" />
-<input type="checkbox" name="check3" onchange="validacion('form1', this)" />
-<input type="checkbox" name="check4" onchange="validacion('form1', this)" />
-</div> 
                         </div>
                     </div>
                 </c:if>
