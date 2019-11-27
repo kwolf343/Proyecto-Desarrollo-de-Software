@@ -1,0 +1,106 @@
+.a,.b{
+    float: left;
+    margin: 0.25%;
+}
+.a{
+    width: 74.5%;
+    background: #fff;
+}
+.b{
+    width: 24.5%;
+}
+.color1{
+    background: red;
+}
+.color2{
+    background: green;
+}
+.uno{
+    padding: 2%;
+}
+.f1 h1, .f2 h1, .f3 h1{
+    background: rgb(43,54,86);
+    padding: 1%;
+    color: #fff;
+}
+.f1 h2, .f2 h2, .f3 h2{
+    color: rgb(169,165,105);
+}
+.f1 form input{
+    float: left;
+    margin: 0 0.5%;
+}
+.f1 h3{
+    float: left;
+}
+.dos{
+    padding: 2%;
+}
+.temas{
+    display: flex;
+    justify-content: space-between;
+}
+.arriba ul li{
+    float: left;
+    background: rgb(43,54,86);
+    color: #fff;
+    padding: 0.75%;
+    margin: 0 0.25%;
+}
+.abajo ul li{
+    background: #fff;
+    color: rgb(43,54,86);
+}
+.bol{
+    width: 59%;
+}
+.pre, .cant, .add{
+    width: 13%;
+}
+.blanco li{
+    background: #fff;
+}
+.cant input{
+    width: 100%;
+}
+.botones input{
+    float: left;
+}
+.botones input{
+    padding: 2%;
+    margin: 5%;
+}
+.tres{
+    padding: 2%;
+}
+.asiento{
+    background: rgb(195,195,195);
+    width: 8%;
+    margin: 1%;
+    padding: 0.5%;
+    float: left;
+    border-radius: 25%;
+}
+.columnas{
+    display: flex;
+    align-items: center;
+    float: right;
+}
+.alCentro{
+    border-radius: 2%;
+    padding: 1%;
+    width: 80%;
+    background: rgb(43,54,86);
+}
+.aLaIzquierda, .aLaDerecha{
+    width: 10%;
+}
+.formulario3{
+    display: flex;
+    justify-content: space-around;
+    background: #fff;
+}
+.formulario3 input{
+    margin-top: 25%;
+    padding: 25%;
+}

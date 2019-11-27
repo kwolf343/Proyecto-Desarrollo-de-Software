@@ -1,0 +1,46 @@
+.usuario li ul{
+    padding: 0.5%;
+    float: left;
+    margin: 0 0.25%;
+    color: #fff;
+}
+.usuario .arriba li ul{
+    background: rgb(169,165,105);
+}
+.usuario .abajo li ul{
+    background-color: white;
+    color:rgb(43,54,86);
+}
+.no{
+    width: 7%;
+}
+.u{
+    width: 15%;
+}
+.n{
+    width: 22%;
+}
+.e{
+    width: 25%;
+}
+.p{
+    width: 12%;
+}
+.r{
+    width: 10%;
+}
+.im{
+    width: 5%;
+}
+.boton{
+    text-align:right;
+}
+.boton p{
+    padding: 1%;
+    float: left;
+    text-align:right;
+}
+.boton input{
+    margin: 0.75%;
+    padding: 0.75%;
+}

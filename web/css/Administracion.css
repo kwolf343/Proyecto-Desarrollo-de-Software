@@ -1,0 +1,52 @@
+body{
+    background: rgb(214,214,214);
+    width: 96%;
+    margin: 2%;
+    color: rgb(43,54,86);
+}
+.titulo{
+    text-align: center;
+    background: #fff;
+    padding: 1%;
+    margin-bottom: 1%;
+    color: rgb(43,54,86);
+}
+li{
+    list-style:none;
+}
+.MP li{
+    list-style: none;
+    background: rgb(43,54,86);
+    margin-bottom: 1%;
+    padding: 5%;
+}
+.MP li:hover{
+    background: rgb(169,165,105);
+}
+.MP li a{
+    color: #fff;
+}
+.izquierdo{
+    float: left;
+}
+.derecho{
+    float: left;
+    margin-left: 1%;
+}
+@media screen and (min-width: 700px){
+    .izquierdo{
+    width: 20%;
+}
+    .derecho{
+    width: 79%;
+
+}
+}
+@media screen and (max-width: 700px) {
+    .izquierdo{
+    width: 30%;
+}
+    .derecho{
+    width: 69%;
+}
+}
