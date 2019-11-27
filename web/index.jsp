@@ -1,4 +1,3 @@
-<%@page import="com.cine_creizy.CRUD.CComidas"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -38,9 +37,5 @@
             <a href="Registro.jsp">Registrarse</a>
             <br><p class="punt">.</p>
         </div>
-        <%
-            CComidas c = new CComidas();
-        %>
-        
     </body>
 </html>
