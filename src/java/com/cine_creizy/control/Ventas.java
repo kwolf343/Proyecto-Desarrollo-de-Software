@@ -28,8 +28,8 @@ public class Ventas extends HttpServlet {
                     int id = (int)sesion.getAttribute("IdCompraComida");
                     int cantidad = (int)sesion.getAttribute("CantidadComida");
                     int idventa = (int)sesion.getAttribute("esteid");
-                    double precio = Double.parseDouble(c.MostrarComidas(id).getPrecio());
-                    dvc.InsertarDetalleventacomida(id, cantidad, idventa,cantidad*precio+"");
+                    double precio = c.MostrarComidas(id).getPrecio();
+                    dvc.InsertarDetalleventacomida(id, cantidad, idventa,cantidad*precio);
                     sesion.setAttribute("Mostrar",true);
                     ArrayList<Detalleventacomida> listado = new ArrayList<Detalleventacomida>();
                     for(int i=0;i<dvc.MostrarTodoDetalleventacomida().size();i++){
@@ -51,7 +51,7 @@ public class Ventas extends HttpServlet {
         if(accion.equals("IniciarVenta")){
             sesion.setAttribute("MostrarCompra", true);
             String N = (String) sesion.getAttribute("Nombres");
-            vc.InsertarVentacomida("0",N);
+            vc.InsertarVentacomida(0,N);
             int n=0;
             for(int i=0; i<vc.MostrarTodoVentacomida().size();i++){
                 n=vc.MostrarTodoVentacomida().get(i).getIdventacomida();
