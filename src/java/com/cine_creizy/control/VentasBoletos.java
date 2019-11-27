@@ -30,6 +30,7 @@ public class VentasBoletos extends HttpServlet {
                     a.add(asi.MostrarTodoAsientos().get(i));
                 }
             }
+            
             sesion.setAttribute("Listado3",a);
             response.sendRedirect("Principal?op=1");
         }
