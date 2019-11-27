@@ -46,13 +46,12 @@
             <div class="b">
                 <h2 style="margin-bottom: 10%;"><center>Ventas</center></h2>
                 <c:if test="${MostrarCompra==true}">
-                <div id="MostrarOcultar">  
+                <div id="MostrarOcultar">
                     <c:if test="${Mostrar==true}">         
                         <c:forEach var="lista" items="${listadodecompra}">
-                            <h3>${estaComida.MostrarComidas(lista.getIdcomida()).getNombre()}: ${lista.getCantidadcomida()}</h3><br>
+                            <div class="arregle"><h3>${estaComida.MostrarComidas(lista.getIdcomida()).getNombre()}: ${lista.getCantidadcomida()}</h3><h3>$${lista.getTotal()}</h3></div><br>
                         </c:forEach>
                     <h3>Total: $${TotalPrecioComida}</h3><br>
-                    <h2>${esteid}</h2>
                     <div class="col-12">
                     <center>
                         <form name="comp" action="Ventas?accion=VenderComida" method="POST">
@@ -67,6 +66,9 @@
                     <c:if test="${MostrarCompra!=true}">
                     <div class="col-12">
                     <center>
+                        <c:if test="${ventaF==true}">
+                        <p><strong style="color: rgb(62,184,16)">Venta finalizada</strong></p>
+                        </c:if>
                         <form name="comp" action="Ventas?accion=IniciarVenta" method="POST">
                             <input type="submit" value="Iniciar venta" name="Comprar"/>
                         </form>
