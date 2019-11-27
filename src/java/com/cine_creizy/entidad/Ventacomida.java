@@ -9,13 +9,14 @@ public class Ventacomida {
     @PrimaryKey
     @AutoIncrement
     private int idventacomida;
-    private String vendedor;
-    private String total;
+    private String idusuario;
+    private double total;
     public Ventacomida(){}
 
-    public Ventacomida(int idventacomida, String total) {
+    public Ventacomida(int idventacomida, double total, String idusuario) {
         this.idventacomida = idventacomida;
         this.total = total;
+        this.idusuario=idusuario;
     }
 
     public int getIdventacomida() {
@@ -27,18 +28,18 @@ public class Ventacomida {
     }
 
     public String getVendedor() {
-        return vendedor;
+        return idusuario;
     }
 
-    public void setVendedor(String vendedor) {
-        this.vendedor = vendedor;
+    public void setVendedor(String idusuario) {
+        this.idusuario = idusuario;
     }
     
-    public String getTotal() {
+    public double getTotal() {
         return total;
     }
 
-    public void setTotal(String total) {
+    public void setTotal(double total) {
         this.total = total;
     }
     

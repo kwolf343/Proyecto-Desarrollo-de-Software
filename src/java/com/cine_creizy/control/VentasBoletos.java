@@ -1,7 +1,11 @@
 package com.cine_creizy.control;
 
+import com.cine_creizy.CRUD.CAsientos;
+import com.cine_creizy.CRUD.CProyecciones;
+import com.cine_creizy.entidad.Asientos;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +21,17 @@ public class VentasBoletos extends HttpServlet {
         if(accion.equals("Horario")){
             sesion.setAttribute("HoraBoletos",true);
             sesion.setAttribute("TBoletos",true);
+            CProyecciones p = new CProyecciones();
+            int number = p.MostrarProyecciones((int) sesion.getAttribute("IdBoleto")).getIdsala();
+            ArrayList<Asientos> a = new ArrayList<Asientos>();
+            CAsientos asi = new CAsientos();
+            for(int i=0;i<asi.MostrarTodoAsientos().size();i++){
+                if(asi.MostrarTodoAsientos().get(i).getIdsala() == number){
+                    a.add(asi.MostrarTodoAsientos().get(i));
+                }
+            }
+            
+            sesion.setAttribute("Listado3",a);
             response.sendRedirect("Principal?op=1");
         }
         if(accion.equals("cancelar")){
@@ -30,6 +45,12 @@ public class VentasBoletos extends HttpServlet {
             response.sendRedirect("Principal?op=1");
             
         }
+        if(accion.equals("cancelar2")){
+            sesion.setAttribute("HoraBoletos",false);
+            sesion.setAttribute("ABoletos",false);
+            response.sendRedirect("Principal?op=1");
+        }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

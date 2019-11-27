@@ -61,6 +61,7 @@ public class Login extends HttpServlet {
                         sesion.setAttribute("Usuario",u.getIdusuario());
                         sesion.setAttribute("Nombre",u.getNombres());
                         sesion.setAttribute("Apellido", u.getApellidos());
+                        sesion.setAttribute("Nombres", u.getNombres()+" "+u.getApellidos());
                         sesion.setAttribute("Rol", u.getIdrol());
                         List<Menu> permisos = getPermisos(u.getIdrol());
                         sesion.setAttribute("Permisos",permisos);

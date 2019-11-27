@@ -13,9 +13,7 @@ import java.util.logging.Logger;
 
 public class CComidas {
     public CComidas(){}
-    public void InsertarComida(String nombre, Double cantidad, int existencias){
-        DecimalFormat df = new DecimalFormat("#.00");
-        String precio = String.valueOf(df.format(cantidad));
+    public void InsertarComida(String nombre, Double precio, int existencias){
         try {
             ConexionPool con = new ConexionPool();
             con.conectar();
@@ -74,9 +72,7 @@ public class CComidas {
         }
         return c;
     }
-    public void ActualizarComidas(int id, String nombre, Double cantidad, int existencias){
-        DecimalFormat df = new DecimalFormat("#.00");
-        String precio = String.valueOf(df.format(cantidad));
+    public void ActualizarComidas(int id, String nombre, Double precio, int existencias){
         try {
             ConexionPool con = new ConexionPool(); 
             con.conectar();

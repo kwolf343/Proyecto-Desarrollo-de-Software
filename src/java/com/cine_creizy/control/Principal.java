@@ -8,6 +8,7 @@ import com.cine_creizy.CRUD.CRoles;
 import com.cine_creizy.CRUD.CSalas;
 import com.cine_creizy.CRUD.CTipodeboletos;
 import com.cine_creizy.CRUD.CUsuario;
+import com.cine_creizy.entidad.Detalleventacomida;
 import com.cine_creizy.entidad.Menu;
 import com.cine_creizy.entidad.Paises;
 import com.cine_creizy.entidad.Proyecciones;
@@ -70,6 +71,8 @@ public class Principal extends HttpServlet {
         sesion.removeAttribute("Nombre");
         sesion.removeAttribute("Apellido");
         sesion.removeAttribute("Rol");
+        
+        
         sesion.invalidate();
         response.sendRedirect("Login");
     }

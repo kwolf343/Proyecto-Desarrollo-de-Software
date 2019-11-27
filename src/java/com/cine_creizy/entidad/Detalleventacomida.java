@@ -13,10 +13,10 @@ public class Detalleventacomida {
     private int idcomida;
     private int cantidadcomida;
     private int idventacomida;
-    private String total;
+    private double total;
     public Detalleventacomida(){}
 
-    public Detalleventacomida(int iddetallecomida, int idcomida, int cantidadcomida, int idventacomida, String total) {
+    public Detalleventacomida(int iddetallecomida, int idcomida, int cantidadcomida, int idventacomida, double total) {
         this.iddetallecomida = iddetallecomida;
         this.idcomida = idcomida;
         this.cantidadcomida = cantidadcomida;
@@ -56,11 +56,11 @@ public class Detalleventacomida {
         this.idventacomida = idventacomida;
     }
 
-    public String getTotal() {
+    public double getTotal() {
         return total;
     }
 
-    public void setTotal(String total) {
+    public void setTotal(double total) {
         this.total = total;
     }
     

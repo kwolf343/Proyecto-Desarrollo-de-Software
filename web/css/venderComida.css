@@ -47,3 +47,7 @@
 .contener1{
     margin-top: 10%;
 }
+.arregle{
+    display: flex;
+    justify-content: space-between;
+}
