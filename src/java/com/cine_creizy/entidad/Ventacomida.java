@@ -10,10 +10,10 @@ public class Ventacomida {
     @AutoIncrement
     private int idventacomida;
     private String vendedor;
-    private String total;
+    private double total;
     public Ventacomida(){}
 
-    public Ventacomida(int idventacomida, String total) {
+    public Ventacomida(int idventacomida, double total) {
         this.idventacomida = idventacomida;
         this.total = total;
     }
@@ -34,11 +34,11 @@ public class Ventacomida {
         this.vendedor = vendedor;
     }
     
-    public String getTotal() {
+    public double getTotal() {
         return total;
     }
 
-    public void setTotal(String total) {
+    public void setTotal(double total) {
         this.total = total;
     }
     

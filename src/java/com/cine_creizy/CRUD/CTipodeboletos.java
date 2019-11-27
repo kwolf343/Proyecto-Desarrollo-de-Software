@@ -14,15 +14,13 @@ import java.util.logging.Logger;
 public class CTipodeboletos {
      public CTipodeboletos(){}
      public void InsertarTipodeboletos(String F, String T, Double precio){
-         DecimalFormat df = new DecimalFormat("#.00");
-         String p = String.valueOf(df.format(precio));
          try {
             ConexionPool con = new ConexionPool();
             con.conectar();
             Tipodeboletos tb = new Tipodeboletos();
             tb.setFormato(F);
             tb.setTipo(T);
-            tb.setPrecio(p);
+            tb.setPrecio(precio);
             Operaciones.abrirConexion(con);
             Operaciones.iniciarTransaccion();
             tb = Operaciones.insertar(tb);
@@ -75,15 +73,13 @@ public class CTipodeboletos {
         return tb;
     }
      public void ActualizarTipodeboletos(int id, String F, String T, double precio){
-        DecimalFormat df = new DecimalFormat("#.00");
-        String p = String.valueOf(df.format(precio));
         try {
             ConexionPool con = new ConexionPool(); 
             con.conectar();
             Tipodeboletos tb = new Tipodeboletos();
             tb.setFormato(F);
             tb.setTipo(T);
-            tb.setPrecio(p);
+            tb.setPrecio(precio);
             Operaciones.abrirConexion(con);
             Operaciones.iniciarTransaccion();
             tb = Operaciones.actualizar(id, tb);

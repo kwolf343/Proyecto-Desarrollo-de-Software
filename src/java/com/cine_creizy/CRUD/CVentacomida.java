@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 
 public class CVentacomida {
     public CVentacomida(){}
-    public void InsertarVentacomida(String total, String vendedor){
+    public void InsertarVentacomida(double total, String vendedor){
         try {
             ConexionPool con = new ConexionPool();
             con.conectar();
@@ -70,7 +70,7 @@ public class CVentacomida {
         }
         return vc;
     }
-    public void ActualizarVentacomida(int id, String total, String vendedor){
+    public void ActualizarVentacomida(int id, double total, String vendedor){
         try {
             ConexionPool con = new ConexionPool(); 
             con.conectar();

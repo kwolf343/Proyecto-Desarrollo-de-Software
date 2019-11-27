@@ -104,6 +104,27 @@
                                     <input type="submit" value="Siguiente" name="Siguiente"/>
                                 </form>
                             </div>
+                        <br>
+                        <script language="javascript">
+//VALIDACION CHECKBOX
+function validacion(formu, obj) {
+  limite=2; //limite de checks a seleccionar
+  num=0;
+  if (obj.checked) {
+    for (i=0; ele=document.getElementById(formu).children[i]; i++)
+      if (ele.checked) num++;
+  if (num>limite)
+    obj.checked=false;
+  }
+}  
+</script>
+
+<div id="form1">
+<input type="checkbox" name="check1" onchange="validacion('form1', this)" />
+<input type="checkbox" name="check2" onchange="validacion('form1', this)" />
+<input type="checkbox" name="check3" onchange="validacion('form1', this)" />
+<input type="checkbox" name="check4" onchange="validacion('form1', this)" />
+</div> 
                         </div>
                     </div>
                 </c:if>

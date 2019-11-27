@@ -10,12 +10,12 @@ public class Comidas {
      @AutoIncrement
      private int idcomida;
      private String nombre;
-     private String precio;
+     private double precio;
      private int existencia;
      
     public Comidas(){}
 
-    public Comidas(int idcomida, String nombre, String precio, int existencia) {
+    public Comidas(int idcomida, String nombre, double precio, int existencia) {
         this.idcomida = idcomida;
         this.nombre = nombre;
         this.precio=precio;
@@ -38,11 +38,11 @@ public class Comidas {
         this.nombre = nombre;
     }
     
-    public String getPrecio() {
+    public double getPrecio() {
         return precio;
     }
 
-    public void setPrecio(String precio) {
+    public void setPrecio(double precio) {
         this.precio = precio;
     }
 

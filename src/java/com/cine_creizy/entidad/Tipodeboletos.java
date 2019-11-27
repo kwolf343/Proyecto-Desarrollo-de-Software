@@ -10,11 +10,11 @@ public class Tipodeboletos {
     private int idtipodeboleto;
     private String formato;
     private String tipo;
-    private String precio;
+    private double precio;
     
     public Tipodeboletos(){}
 
-    public Tipodeboletos(int idtipodeboleto, String formato, String tipo, String precio) {
+    public Tipodeboletos(int idtipodeboleto, String formato, String tipo, double precio) {
         this.idtipodeboleto = idtipodeboleto;
         this.formato = formato;
         this.tipo = tipo;
@@ -45,11 +45,11 @@ public class Tipodeboletos {
         this.tipo = tipo;
     }
 
-    public String getPrecio() {
+    public double getPrecio() {
         return precio;
     }
 
-    public void setPrecio(String precio) {
+    public void setPrecio(double precio) {
         this.precio = precio;
     }
     
