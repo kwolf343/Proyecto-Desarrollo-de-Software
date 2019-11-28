@@ -40,6 +40,10 @@
         <servlet-name>VentasBoletos</servlet-name>
         <servlet-class>com.cine_creizy.control.VentasBoletos</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Errores</servlet-name>
+        <servlet-class>com.cine_creizy.control.Errores</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Principal</servlet-name>
         <url-pattern>/Principal</url-pattern>
@@ -80,11 +84,26 @@
         <servlet-name>VentasBoletos</servlet-name>
         <url-pattern>/VentasBoletos</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Errores</servlet-name>
+        <url-pattern>/Errores</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             1
         </session-timeout>
     </session-config>
+    
+    <error-page>
+        <error-code>404</error-code>
+        <location>/Errores</location>
+    </error-page>
+    
+    <error-page>
+        <exception-type>java.lang.Throwable</exception-type>
+        <location>/Errores</location>
+    </error-page>
+    
     <welcome-file-list>
         <welcome-file>Login</welcome-file>
     </welcome-file-list>

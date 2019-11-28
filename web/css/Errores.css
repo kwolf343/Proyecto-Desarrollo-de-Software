@@ -1,0 +1,43 @@
+* {
+	margin: 0;
+	padding: 0;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-box-sizing: border-box;
+}
+
+body {
+	
+	font-family: sans-serif;
+	line-height: 18px;
+        font-size: 25px;
+        color: rgb(43,54,86); 
+/*        -webkit-text-stroke: 0.4px rgb(214,214,214);*/
+        
+}
+
+.contenido h1{
+    -webkit-text-stroke: 1px white;
+}
+
+
+
+img{
+    
+    width: 30%;
+    height: auto;
+   
+}
+
+.errores{
+   background-color: white;
+   margin: 50px;
+    
+}
+
+a{
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    
+}
