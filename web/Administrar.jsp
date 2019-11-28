@@ -24,7 +24,6 @@
             <center><h1>¡BIENVENIDOS!</h1></center>
            <br>
         <center><p>Cine Creizy ® Derechos Reservados. </p></center>
-    
             </div>
         </div>
         
