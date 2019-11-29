@@ -30,8 +30,18 @@ public class Ventas extends HttpServlet {
                     double precio = c.MostrarComidas(id).getPrecio();  
                     sesion.setAttribute("Mostrar",true);
                     ArrayList<Detalleventacomida> listado = (ArrayList<Detalleventacomida>) sesion.getAttribute("listadoN1");
-                    Detalleventacomida d = new Detalleventacomida(0,id,cantidad,0, cantidad*precio);
-                    listado.add(d);
+                    boolean repetido=false;
+                    for(int i=0;i<listado.size();i++){
+                        if(listado.get(i).getIdcomida()==id){
+                            listado.get(i).setCantidadcomida(cantidad);
+                            listado.get(i).setTotal(cantidad*precio);
+                            repetido=true;
+                        }
+                    }
+                    if(repetido==false){
+                        Detalleventacomida d = new Detalleventacomida(0,id,cantidad,0, cantidad*precio);
+                        listado.add(d);
+                    }
                     double j=0;
                     for(int i=0;i<listado.size();i++){
                         j=j+listado.get(i).getTotal();
@@ -49,15 +59,18 @@ public class Ventas extends HttpServlet {
             }
         }
         if(accion.equals("IniciarVenta")){
-            sesion.setAttribute("MostrarCompra", true);
-            ArrayList<Detalleventacomida> listado = new ArrayList<Detalleventacomida>();
-            sesion.setAttribute("listadoN1",listado);
-            sesion.setAttribute("TotalPrecioComida", 0);
+            if(sesion.getAttribute("Usuario")!=null){
+                sesion.setAttribute("MostrarCompra", true);
+                ArrayList<Detalleventacomida> listado = new ArrayList<Detalleventacomida>();
+                sesion.setAttribute("listadoN1",listado);
+                sesion.setAttribute("TotalPrecioComida", 0);
+            }
             response.sendRedirect("Principal?op=2");
         }
         if(accion.equals("CancelarVenta")){
             sesion.removeAttribute("Mostrar");
             sesion.setAttribute("MostrarCompra", false);
+            sesion.setAttribute("ventaF", false);
             response.sendRedirect("Principal?op=2");
         }
         if(accion.equals("VenderComida")){
@@ -74,6 +87,10 @@ public class Ventas extends HttpServlet {
                         c.MostrarComidas(listado.get(i).getIdcomida()).getPrecio()*listado.get(i).getCantidadcomida());
             }
             vc.ActualizarVentacomida(vc.MostrarTodoVentacomida().get(vc.MostrarTodoVentacomida().size()-1).getIdventacomida(), (double) sesion.getAttribute("TotalPrecioComida"), N);
+            for(int i=0;i<listado.size();i++){
+                int j =listado.get(i).getIdcomida();
+                c.ActualizarComidas(j,c.MostrarComidas(j).getNombre(),c.MostrarComidas(j).getPrecio(),c.MostrarComidas(j).getExistencia()-listado.get(i).getCantidadcomida());
+            }
             response.sendRedirect("Principal?op=2");
         }
         
