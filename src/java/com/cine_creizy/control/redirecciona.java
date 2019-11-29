@@ -54,6 +54,9 @@ public class redirecciona extends HttpServlet {
             sesion.setAttribute("IdBoleto", num-8000);
             response.sendRedirect("VentasBoletos?accion=Horario");
         }
+        if(num>9000&&num<10000){
+            response.sendRedirect("VentasBoletos?accion=agregar");
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
