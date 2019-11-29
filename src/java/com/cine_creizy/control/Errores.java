@@ -29,19 +29,21 @@ public class Errores extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Errores</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet Errores at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+        Integer statusCode = (Integer) request.getAttribute("javax.servlet.error.status_code");
+        String servletName = (String) request.getAttribute("javax.servlet.error.servlet_name");
+        String requestUri = (String) request.getAttribute("javax.servlet.error.request_uri");
+        switch(statusCode){
+            case 404:
+                request.getRequestDispatcher("Errores/error404.html").forward(request, response);
+                break;
+            case 500:
+                request.getRequestDispatcher("Errores/error500.html").forward(request, response);
+                break;
+            default:
+                request.getRequestDispatcher("Errores/error500.html").forward(request, response);
+                break;
+             }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

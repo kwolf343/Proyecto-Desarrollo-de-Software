@@ -48,7 +48,7 @@
                 <c:if test="${MostrarCompra==true}">
                 <div id="MostrarOcultar">
                     <c:if test="${Mostrar==true}">         
-                        <c:forEach var="lista" items="${listadodecompra}">
+                        <c:forEach var="lista" items="${listadoN1}">
                             <div class="arregle"><h3>${estaComida.MostrarComidas(lista.getIdcomida()).getNombre()}: ${lista.getCantidadcomida()}</h3><h3>$${lista.getTotal()}</h3></div><br>
                         </c:forEach>
                     <h3>Total: $${TotalPrecioComida}</h3><br>

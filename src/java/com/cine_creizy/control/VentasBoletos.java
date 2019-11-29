@@ -34,7 +34,7 @@ public class VentasBoletos extends HttpServlet {
             sesion.setAttribute("Listado3",a);
             response.sendRedirect("Principal?op=1");
         }
-        if(accion.equals("cancelar")){
+        if(accion.equals("atras")){
             sesion.setAttribute("HoraBoletos",false);
             sesion.setAttribute("TBoletos",false);
             response.sendRedirect("Principal?op=1");
@@ -45,12 +45,14 @@ public class VentasBoletos extends HttpServlet {
             response.sendRedirect("Principal?op=1");
             
         }
-        if(accion.equals("cancelar2")){
-            sesion.setAttribute("HoraBoletos",false);
+        if(accion.equals("atras2")){
+            sesion.setAttribute("TBoletos",true);
             sesion.setAttribute("ABoletos",false);
             response.sendRedirect("Principal?op=1");
         }
-        
+        if(accion.equals("agregar")){
+            response.sendRedirect("Principal?op=1");
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

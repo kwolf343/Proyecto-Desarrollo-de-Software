@@ -54,7 +54,7 @@
                             <div class="abajo">
                                 <ul>
                                     <c:forEach var="i" items="${ListaTipodeBoletos}"> 
-                                        <form class="blanco" name="ventaB" action="VentasBoletos?accion=hola" method="POST">
+                                        <form class="blanco" name="ventaB" action="redirecciona?accion=${9000+i.getIdtipodeboleto()}" method="POST">
                                             <li class="bol">${i.getFormato()}       ${i.getTipo()}</li>
                                             <li class="pre"><center>$${i.getPrecio()}</center></li>
                                             <li class="cant"><center><input type="number" name="cantidad" min="1" required></center></li>
@@ -67,8 +67,8 @@
                         <div>
                         </div>
                         <div class="botones">
-                            <form class="cance" name="ve11" action="VentasBoletos?accion=cancelar" method="POST">
-                                <input type="submit" value="Cancelar" name="Cancelar"/>
+                            <form class="cance" name="ve11" action="VentasBoletos?accion=atras" method="POST">
+                                <input type="submit" value="Atras" name="Cancelar"/>
                             </form>
                             <form class="cance" name="ve12" action="VentasBoletos?accion=siguiente" method="POST">
                                 <input type="submit" value="Siguiente" name="Siguiente"/>
@@ -117,8 +117,8 @@
                                      </c:forEach>
                                         <input class="botonC bnt_ col-3" name="Submit2" type="submit" value="Vender" />
                                     </form>
-                                    <form class="cance" name="ve13" action="VentasBoletos?accion=cancelar2" method="POST">
-                                        <input class="botonC bnt_2 col-3" type="submit" value="Cancelar" name="Cancelar"/>
+                                    <form class="cance" name="ve13" action="VentasBoletos?accion=atras2" method="POST">
+                                        <input class="botonC bnt_2 col-3" type="submit" value="Atras" name="Cancelar"/>
                                     </form>
                                     <br>
                                 </div>
@@ -129,7 +129,16 @@
                     </div>
                 </c:if>
             </div>
-            <div class="b color2">bb</div>
+            <div class="b">
+                <div class="col-12 x">
+                    <center><h2>Ventas</h2></center>
+                </div>
+                <div class="col-12 x2">
+                    <c:if test="${TBoletos==true}">
+                        
+                    </c:if>
+                </div>
+            </div>
         </div>
     </body>
 </html>
