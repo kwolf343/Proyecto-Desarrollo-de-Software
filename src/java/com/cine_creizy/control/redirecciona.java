@@ -55,6 +55,9 @@ public class redirecciona extends HttpServlet {
             response.sendRedirect("VentasBoletos?accion=Horario");
         }
         if(num>9000&&num<10000){
+            int cantidad = Integer.parseInt(request.getParameter("cantidad"));
+            sesion.setAttribute("IdCompraBoleto", num-9000);
+            sesion.setAttribute("CantidadBoletos",cantidad);
             response.sendRedirect("VentasBoletos?accion=agregar");
         }
     }

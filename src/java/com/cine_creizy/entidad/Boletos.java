@@ -8,24 +8,27 @@ import com.cine_creizy.anotaciones.PrimaryKey;
 public class Boletos {
     @PrimaryKey
     @AutoIncrement
-    private String codigoboleto;
+    private int idboleto;
     private int idtipodeboleto;
-    private int idproyecion;
+    private int idproyeccion;
+    private int idasiento;
+    private int idventaboleto;
     
     public Boletos(){}
 
-    public Boletos(String codigoboleto, int idtipodeboleto, int idproyecion) {
-        this.codigoboleto = codigoboleto;
+    public Boletos(int idboleto, int idtipodeboleto, int idproyeccion, int idasiento, int idventaboleto) {
+        this.idboleto = idboleto;
         this.idtipodeboleto = idtipodeboleto;
-        this.idproyecion = idproyecion;
+        this.idproyeccion = idproyeccion;
+        this.idasiento = idasiento;
+        this.idventaboleto = idventaboleto;
+    }
+    public int getIdboleto() {
+        return idboleto;
     }
 
-    public String getCodigoboleto() {
-        return codigoboleto;
-    }
-
-    public void setCodigoboleto(String codigoboleto) {
-        this.codigoboleto = codigoboleto;
+    public void setIdboleto(int idboleto) {
+        this.idboleto = idboleto;
     }
 
     public int getIdtipodeboleto() {
@@ -36,13 +39,28 @@ public class Boletos {
         this.idtipodeboleto = idtipodeboleto;
     }
 
-    public int getIdproyecion() {
-        return idproyecion;
+    public int getIdproyeccion() {
+        return idproyeccion;
     }
 
-    public void setIdproyecion(int idproyecion) {
-        this.idproyecion = idproyecion;
+    public void setIdproyeccion(int idproyecion) {
+        this.idproyeccion = idproyecion;
     }
-    
-    
+
+    public int getIdasiento() {
+        return idasiento;
+    }
+
+    public void setIdasiento(int idasiento) {
+        this.idasiento = idasiento;
+    }
+
+    public int getIdventaboleto() {
+        return idventaboleto;
+    }
+
+    public void setIdventaboleto(int idventaboleto) {
+        this.idventaboleto = idventaboleto;
+    }
+
 }
