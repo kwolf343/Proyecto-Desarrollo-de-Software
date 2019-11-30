@@ -1,8 +1,9 @@
+
 package com.cine_creizy.CRUD;
 
 import com.cine_creizy.conexion.ConexionPool;
 import com.cine_creizy.control.Principal;
-import com.cine_creizy.entidad.Boletos;
+import com.cine_creizy.entidad.Ventaboletos;
 import com.cine_creizy.operaciones.Operaciones;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -10,21 +11,18 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class CBoletos {
-    public CBoletos(){}
-    
-    public void InsertarBoletos(int idtipodeboleto, int idproyeccion, int idasiento, int idventaboleto){
+public class CVentaboletos {
+    public CVentaboletos(){}
+    public void InsertarVentacomida(double total, String vendedor){
         try {
             ConexionPool con = new ConexionPool();
             con.conectar();
-            Boletos b = new Boletos();
-            b.setIdtipodeboleto(idtipodeboleto);
-            b.setIdproyeccion(idproyeccion);
-            b.setIdasiento(idasiento);
-            b.setIdventaboleto(idventaboleto);
+            Ventaboletos vb = new Ventaboletos();
+            vb.setTotal(total);
+            vb.setIdusuario(vendedor);
             Operaciones.abrirConexion(con);
             Operaciones.iniciarTransaccion();
-            b = Operaciones.insertar(b);
+            vb = Operaciones.insertar(vb);
             Operaciones.commit();
             } catch(Exception ex) {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null,ex);
@@ -36,14 +34,14 @@ public class CBoletos {
             }
             }
     }
-    public void BorrarBoletos(int id){
+    public void BorrarVentaboletos(int id){
         try {
             ConexionPool con = new ConexionPool();
             con.conectar();
-            Boletos b = new Boletos();
+            Ventaboletos vb = new Ventaboletos();
             Operaciones.abrirConexion(con);
             Operaciones.iniciarTransaccion();
-            b = Operaciones.eliminar(id, new Boletos());
+            vb = Operaciones.eliminar(id, new Ventaboletos());
             Operaciones.commit();
             } catch(Exception ex) {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
@@ -55,13 +53,13 @@ public class CBoletos {
             }
             }
     }
-    public Boletos MostrarBoletos(int id){
-        Boletos b = new Boletos();
+    public Ventaboletos MostrarVentaboletos(int id){
+        Ventaboletos vb = new Ventaboletos();
         try {
         ConexionPool con = new ConexionPool();
         con.conectar();
         Operaciones.abrirConexion(con);
-        b = Operaciones.get(id, new Boletos());
+        vb = Operaciones.get(id, new Ventaboletos());
         } catch(Exception ex) {
         Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
@@ -71,21 +69,19 @@ public class CBoletos {
         Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
         }
         }
-        return b;
+        return vb;
     }
-    public void ActualizarBoletos(int idboleto, int idtipodeboleto, int idproyeccion, int idasiento, int idventaboleto){
+    public void ActualizarVentaboletos(int idventaboleto, String idusuario, double total){
         try {
             ConexionPool con = new ConexionPool(); 
             con.conectar();
-            Boletos b = new Boletos();
-            b.setIdboleto(idboleto);
-            b.setIdtipodeboleto(idtipodeboleto);
-            b.setIdproyeccion(idproyeccion);
-            b.setIdasiento(idasiento);
-            b.setIdventaboleto(idventaboleto);
+            Ventaboletos vb = new Ventaboletos();
+            vb.setIdventaboleto(idventaboleto);
+            vb.setTotal(total);
+            vb.setIdusuario(idusuario);
             Operaciones.abrirConexion(con);
             Operaciones.iniciarTransaccion();
-            b = Operaciones.actualizar(idboleto, b);
+            vb = Operaciones.actualizar(idventaboleto, vb);
             Operaciones.commit();
             } catch(Exception ex) {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null,ex);
@@ -97,13 +93,13 @@ public class CBoletos {
             }
             }
     }
-    public List<Boletos> MostrarTodoBoletos(){
-        ArrayList<Boletos> listado = new ArrayList<Boletos>();
+    public List<Ventaboletos> MostrarTodoVentaboletos(){
+        ArrayList<Ventaboletos> listado = new ArrayList<Ventaboletos>();
         try {
         ConexionPool con = new ConexionPool();
         con.conectar();
         Operaciones.abrirConexion(con);
-        listado = Operaciones.getTodos(new Boletos());
+        listado = Operaciones.getTodos(new Ventaboletos());
         } catch(Exception ex) {
         Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
         } finally {

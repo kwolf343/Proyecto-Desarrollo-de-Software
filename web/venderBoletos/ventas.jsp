@@ -85,14 +85,19 @@
                     if (inpt.checked) { 
                     contador++;
                     } 
-                    } 
-                    if(contador > 5) {
-                    alert('Has seleccionados demasiados');
+                    }
+                    if(contador == 0) {
+                    alert('Error! No puedes continuar si no seleccionas ningun asiento');
                     contador = 0;
                     return false;
                     }
-                    if(contador < 2) {
-                    alert('Has seleccionados pocos');
+                    if(contador > ${canti}) {
+                    alert('Error! el numero de asientos sobrepasa la cantidad de boletos a vender');
+                    contador = 0;
+                    return false;
+                    }
+                    if(contador < ${canti}) {
+                    alert('Error! porfavor selecciona ${canti} asientos');
                     contador = 0;
                     return false;
                     }
@@ -132,10 +137,30 @@
             <div class="b">
                 <div class="col-12 x">
                     <center><h2>Ventas</h2></center>
+                    <br><br>
                 </div>
                 <div class="col-12 x2">
-                    <c:if test="${TBoletos==true}">
-                        
+                    <c:if test="${Ventablts==true}">
+                        <div class="color1 clase3"><h3>Boleto</h3><h3>Cantidad</h3></div><br>
+                    </c:if>
+                    <div class="col-8">
+                        <c:forEach var="i" items="${ListadoDeLosBoletos}">
+                            <div class="clase3"><h4>${i.getFormato()} ${i.getTipo()} <h4>$${i.getPrecio()}</h4></div><br>
+                        </c:forEach>
+                    </div>
+                    <div class="col-4">
+                        <c:forEach var="i" items="${ListadoDeLosNumeros}">
+                            <center><h4>${i}</h4></center><br>
+                        </c:forEach>
+                    </div>
+                    <c:if test="${Ventablts==true}">
+                        <div class="col-12 clase3 clasefin"><h3>N° Boletos: ${canti}</h3><h3>Total: $${to}</h3></div>
+                        <br><br>
+                        <div class="col-12 finalizar">
+                            <form name="ve12" action="VentasBoletos?accion=CancelarFinalizar" method="POST">
+                                <center><input type="submit" value="Cancelar" name="Fin"/></center>
+                            </form>
+                        </div>
                     </c:if>
                 </div>
             </div>

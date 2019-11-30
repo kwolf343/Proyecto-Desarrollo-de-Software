@@ -10,10 +10,7 @@
     width: 24.5%;
 }
 .color1{
-    background: red;
-}
-.color2{
-    background: green;
+    color: rgb(169,165,105);
 }
 .uno{
     padding: 2%;
@@ -115,4 +112,16 @@
     background: rgb(43,54,86);
     color: #fff;
     padding: 1%;
+}
+.clase3{
+    display: flex;
+    justify-content: space-between;
+}
+
+.clasefin{
+    margin-top: 10%;
+}
+.finalizar input{
+    padding: 3%;
+    margin-top: 10%;
 }
