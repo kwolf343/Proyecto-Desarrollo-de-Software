@@ -37,7 +37,6 @@ public class Boleto extends HttpServlet {
             response.sendRedirect("Principal?op=12");
         }
         if(accion.equals("AgregaBoleto")){
-            
             String formato = request.getParameter("formato");
             String tipo = request.getParameter("tipo");
             Double precio = Double.parseDouble(request.getParameter("precio"));

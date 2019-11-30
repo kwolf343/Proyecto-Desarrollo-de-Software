@@ -1,8 +1,13 @@
 package com.cine_creizy.control;
 
 import com.cine_creizy.CRUD.CAsientos;
+import com.cine_creizy.CRUD.CBoletos;
 import com.cine_creizy.CRUD.CProyecciones;
+import com.cine_creizy.CRUD.CTipodeboletos;
+import com.cine_creizy.CRUD.CVentaboletos;
 import com.cine_creizy.entidad.Asientos;
+import com.cine_creizy.entidad.Boletos;
+import com.cine_creizy.entidad.Tipodeboletos;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -18,6 +23,8 @@ public class VentasBoletos extends HttpServlet {
             throws ServletException, IOException {
         HttpSession sesion = request.getSession();
         String accion = request.getParameter("accion");
+        CBoletos bol = new CBoletos();
+        CVentaboletos vb = new CVentaboletos();
         if(accion.equals("Horario")){
             sesion.setAttribute("HoraBoletos",true);
             sesion.setAttribute("TBoletos",true);
@@ -31,11 +38,21 @@ public class VentasBoletos extends HttpServlet {
                 }
             }
             sesion.setAttribute("Listado3",a);
+            ArrayList<Tipodeboletos> b = new ArrayList<Tipodeboletos>();
+            ArrayList<Integer> numeros = new ArrayList();
+            sesion.setAttribute("ListadoDeLosBoletos", b);
+            sesion.setAttribute("ListadoDeLosNumeros",numeros);
+            sesion.setAttribute("Ventablts",true);
+            sesion.setAttribute("to", 0);
+            sesion.setAttribute("canti", 0);
             response.sendRedirect("Principal?op=1");
         }
         if(accion.equals("atras")){
             sesion.setAttribute("HoraBoletos",false);
             sesion.setAttribute("TBoletos",false);
+            sesion.removeAttribute("ListadoDeLosBoletos");
+            sesion.removeAttribute("ListadoDeLosNumeros");
+            sesion.setAttribute("Ventablts", false);
             response.sendRedirect("Principal?op=1");
         }
         if(accion.equals("siguiente")){
@@ -47,10 +64,52 @@ public class VentasBoletos extends HttpServlet {
         if(accion.equals("atras2")){
             sesion.setAttribute("TBoletos",true);
             sesion.setAttribute("ABoletos",false);
+            
             response.sendRedirect("Principal?op=1");
         }
         if(accion.equals("agregar")){
-            
+            ArrayList<Tipodeboletos> b = (ArrayList<Tipodeboletos>) sesion.getAttribute("ListadoDeLosBoletos");
+            ArrayList<Integer> numeros = (ArrayList<Integer>) sesion.getAttribute("ListadoDeLosNumeros");
+            boolean repetido=false;
+            int id = (int) sesion.getAttribute("IdCompraBoleto");
+            int cantidad=0;
+            double total=0;
+            Integer cant = (Integer) sesion.getAttribute("CantidadBoletos");
+            for(int i=0;i<b.size();i++){
+                if(b.get(i).getIdtipodeboleto()==id){
+                    numeros.set(i,cant);
+                    repetido=true;
+                }
+            }
+            if(repetido==false){
+                CTipodeboletos Ctb = new CTipodeboletos();
+                Tipodeboletos tipoDB = Ctb.MostrarTipodeboletos((int) sesion.getAttribute("IdCompraBoleto"));
+                b.add(tipoDB);
+                numeros.add(cant);
+            }
+            for(int i=0;i<numeros.size();i++){
+                cantidad = cantidad+numeros.get(i);
+                total = total+numeros.get(i)*b.get(i).getPrecio();
+            }
+            sesion.setAttribute("ListadoDeLosBoletos", b);
+            sesion.setAttribute("ListadoDeLosNumeros",numeros);
+            sesion.setAttribute("canti", cantidad);
+            sesion.setAttribute("to", total);
+            response.sendRedirect("Principal?op=1");
+        }
+        if(accion.equals("vender")){
+            ArrayList<Tipodeboletos> b = (ArrayList<Tipodeboletos>) sesion.getAttribute("ListadoDeLosBoletos");
+            ArrayList<Integer> numeros = (ArrayList<Integer>) sesion.getAttribute("ListadoDeLosNumeros");
+            String[] ventas= request.getParameterValues("check");
+            int contador=0;
+            String N = (String) sesion.getAttribute("Usuario");
+            vb.InsertarVentacomida((double) sesion.getAttribute("to"), N);
+            for(int i=0; i<numeros.size();i++){
+                for(int j=0;j<numeros.get(i);j++){
+                    bol.InsertarBoletos(b.get(i).getIdtipodeboleto(), (int) sesion.getAttribute("IdCompraBoleto"), Integer.parseInt(ventas[contador]), vb.MostrarTodoVentaboletos().get(vb.MostrarTodoVentaboletos().size()-1).getIdventaboleto());
+                    contador++;
+                }
+            }
             response.sendRedirect("Principal?op=1");
         }
     }
