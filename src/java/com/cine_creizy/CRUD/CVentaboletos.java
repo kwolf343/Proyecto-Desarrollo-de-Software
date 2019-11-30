@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 
 public class CVentaboletos {
     public CVentaboletos(){}
-    public void InsertarVentacomida(double total, String vendedor){
+    public void InsertarVentaboletos(double total, String vendedor){
         try {
             ConexionPool con = new ConexionPool();
             con.conectar();
