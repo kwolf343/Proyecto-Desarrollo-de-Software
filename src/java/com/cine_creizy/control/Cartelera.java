@@ -16,6 +16,7 @@ public class Cartelera extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession sesion = request.getSession();
+        if(sesion.getAttribute("Usuario")!=null){
         String accion = request.getParameter("accion");
         CProyecciones p = new CProyecciones();
         if(accion.equals("info")){
@@ -55,6 +56,10 @@ public class Cartelera extends HttpServlet {
             int idSala = Integer.parseInt(request.getParameter("Sala"));
             p.InsertarProyeccion(horaInicio, horaFin, idSala, idPeli);
             response.sendRedirect("Principal?op=4");
+        }
+    }
+        else{
+            request.getRequestDispatcher("sesion.jsp").forward(request, response);
         }
     }
 

@@ -22,6 +22,7 @@ public class VentasBoletos extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession sesion = request.getSession();
+        if(sesion.getAttribute("Usuario")!=null){
         String accion = request.getParameter("accion");
         CBoletos bol = new CBoletos();
         CVentaboletos vb = new CVentaboletos();
@@ -129,6 +130,10 @@ public class VentasBoletos extends HttpServlet {
             sesion.removeAttribute("ListadoDeLosNumeros");
             sesion.setAttribute("Ventablts",false);
             response.sendRedirect("Principal?op=1");
+        }
+    }
+        else{
+            request.getRequestDispatcher("sesion.jsp").forward(request, response);
         }
     }
 

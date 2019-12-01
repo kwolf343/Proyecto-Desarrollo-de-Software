@@ -15,6 +15,7 @@ public class Pelis extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession sesion = request.getSession();
+        if(sesion.getAttribute("Usuario")!=null){
         String accion = request.getParameter("accion");
         Peliculas peli = new Peliculas();
         CPeliculas p = new CPeliculas();   
@@ -68,6 +69,10 @@ public class Pelis extends HttpServlet {
             String sinopsis = request.getParameter("sinopsis");
             p.InsertarPelicula(titulo, hora+":"+minuto+":"+segundo, sinopsis, clasificacion, generos, estreno, salida);
             response.sendRedirect("Principal?op=3");
+        }
+    }
+        else{
+            request.getRequestDispatcher("sesion.jsp").forward(request, response);
         }
     }
 

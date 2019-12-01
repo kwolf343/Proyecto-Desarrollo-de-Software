@@ -14,6 +14,7 @@ public class Usuario extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession sesion = request.getSession();
+        if(sesion.getAttribute("Usuario")!=null){
         String accion = request.getParameter("accion");
         CUsuario u = new CUsuario();
         if(accion.equals("BorrarUsuario")){
@@ -31,6 +32,10 @@ public class Usuario extends HttpServlet {
             }
             
             }
+        }
+        else{
+            request.getRequestDispatcher("sesion.jsp").forward(request, response);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

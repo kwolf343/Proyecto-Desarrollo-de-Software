@@ -15,6 +15,7 @@ public class Comida extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession sesion = request.getSession();
+        if(sesion.getAttribute("Usuario")!=null){
         String accion = request.getParameter("accion");
         CComidas c = new CComidas();
         if(accion.equals("ActualizaComida")){
@@ -49,6 +50,10 @@ public class Comida extends HttpServlet {
             int id = (int)sesion.getAttribute("IdComida");
             c.BorrarComidas(id);
             response.sendRedirect("Principal?op=5");
+        }
+    }
+        else{
+            request.getRequestDispatcher("sesion.jsp").forward(request, response);
         }
     }
 
