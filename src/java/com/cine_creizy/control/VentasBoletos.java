@@ -22,9 +22,11 @@ public class VentasBoletos extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession sesion = request.getSession();
+        if(sesion.getAttribute("Usuario")!=null){
         String accion = request.getParameter("accion");
         CBoletos bol = new CBoletos();
         CVentaboletos vb = new CVentaboletos();
+        CAsientos as = new CAsientos();
         if(accion.equals("Horario")){
             sesion.setAttribute("HoraBoletos",true);
             sesion.setAttribute("TBoletos",true);
@@ -45,6 +47,7 @@ public class VentasBoletos extends HttpServlet {
             sesion.setAttribute("Ventablts",true);
             sesion.setAttribute("to", 0);
             sesion.setAttribute("canti", 0);
+            sesion.setAttribute("resultado",false);
             response.sendRedirect("Principal?op=1");
         }
         if(accion.equals("atras")){
@@ -64,7 +67,6 @@ public class VentasBoletos extends HttpServlet {
         if(accion.equals("atras2")){
             sesion.setAttribute("TBoletos",true);
             sesion.setAttribute("ABoletos",false);
-            
             response.sendRedirect("Principal?op=1");
         }
         if(accion.equals("agregar")){
@@ -103,14 +105,35 @@ public class VentasBoletos extends HttpServlet {
             String[] ventas= request.getParameterValues("check");
             int contador=0;
             String N = (String) sesion.getAttribute("Usuario");
-            vb.InsertarVentacomida((double) sesion.getAttribute("to"), N);
-            for(int i=0; i<numeros.size();i++){
+            vb.InsertarVentaboletos((double) sesion.getAttribute("to"), N);
+            for(int i=0; i<b.size();i++){
                 for(int j=0;j<numeros.get(i);j++){
-                    bol.InsertarBoletos(b.get(i).getIdtipodeboleto(), (int) sesion.getAttribute("IdCompraBoleto"), Integer.parseInt(ventas[contador]), vb.MostrarTodoVentaboletos().get(vb.MostrarTodoVentaboletos().size()-1).getIdventaboleto());
+                    bol.InsertarBoletos(b.get(i).getIdtipodeboleto(), (int) sesion.getAttribute("IdBoleto"),Integer.parseInt(ventas[contador]),vb.MostrarTodoVentaboletos().get((vb.MostrarTodoVentaboletos().size())-1).getIdventaboleto());
+                    as.ActualizarAsientos(Integer.parseInt(ventas[contador]), as.MostrarAsientos(Integer.parseInt(ventas[contador])).getAsiento(),as.MostrarAsientos(Integer.parseInt(ventas[contador])).getIdsala(), 0);
                     contador++;
                 }
             }
+            sesion.setAttribute("resultado",true);
+            sesion.setAttribute("HoraBoletos",false);
+            sesion.setAttribute("TBoletos",false);
+            sesion.setAttribute("ABoletos",false);
+            sesion.removeAttribute("ListadoDeLosBoletos");
+            sesion.removeAttribute("ListadoDeLosNumeros");
+            sesion.setAttribute("Ventablts",false);
             response.sendRedirect("Principal?op=1");
+        }
+        if(accion.equals("CancelarFinalizar")){
+            sesion.setAttribute("HoraBoletos",false);
+            sesion.setAttribute("TBoletos",false);
+            sesion.setAttribute("ABoletos",false);
+            sesion.removeAttribute("ListadoDeLosBoletos");
+            sesion.removeAttribute("ListadoDeLosNumeros");
+            sesion.setAttribute("Ventablts",false);
+            response.sendRedirect("Principal?op=1");
+        }
+    }
+        else{
+            request.getRequestDispatcher("sesion.jsp").forward(request, response);
         }
     }
 

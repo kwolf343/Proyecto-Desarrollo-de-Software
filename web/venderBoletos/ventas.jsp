@@ -113,12 +113,22 @@
                                 <div class="alCentro">
                                     <form action="VentasBoletos?accion=vender"  method="post" name="venderBoleto" onsubmit="return funcion();"> 
                                      <c:forEach var="i" items="${Listado3}">
-                                         <div class="asiento ">
-                                             <center>
-                                                 ${i.getAsiento()}<br>
-                                                 <input type="checkbox" name="check" value="${i.getIdasiento()}">
-                                             </center>
-                                         </div>  
+                                         <c:if test="${i.getDisponible()==1}">
+                                            <div class="asiento">
+                                                <center>
+                                                    ${i.getAsiento()}<br>
+                                                    <input type="checkbox" name="check" value="${i.getIdasiento()}">
+                                                </center>
+                                            </div>
+                                         </c:if>
+                                         <c:if test="${i.getDisponible()==0}">
+                                            <div class="asiento as2">
+                                                <center>
+                                                    ${i.getAsiento()}<br>
+                                                    X
+                                                </center>
+                                            </div>
+                                         </c:if>
                                      </c:forEach>
                                         <input class="botonC bnt_ col-3" name="Submit2" type="submit" value="Vender" />
                                     </form>
@@ -138,6 +148,9 @@
                 <div class="col-12 x">
                     <center><h2>Ventas</h2></center>
                     <br><br>
+                    <c:if test="${resultado==true}">
+                        <center><p><strong style="color: rgb(62,184,16)">Venta finalizada</strong></p></center>
+                    </c:if>
                 </div>
                 <div class="col-12 x2">
                     <c:if test="${Ventablts==true}">

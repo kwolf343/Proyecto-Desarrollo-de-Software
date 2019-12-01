@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="css/estilos.css" type="text/css"><link>
         <link rel="stylesheet" href="css/Administracion.css" type="text/css"><link>
         <link rel="stylesheet" href="css/AdministraPeliculas.css" type="text/css"><link>
-        <title>JSP Page</title>
+        <title>Peliculas</title>
     </head>
     <body>
         <%@include file="/user.jsp"%>

@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperRunManager;
 @WebServlet(name = "Reportes", urlPatterns = {"/Reportes"})
-public class Reportes extends HttpServlet {
+public class Reporte extends HttpServlet {
  protected void processRequest(HttpServletRequest request, HttpServletResponse response)
  throws ServletException, IOException {
  //Creamos la conexion

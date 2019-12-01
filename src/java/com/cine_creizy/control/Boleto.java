@@ -13,9 +13,10 @@ public class Boleto extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String accion = request.getParameter("accion");
         HttpSession sesion = request.getSession();
-        CTipodeboletos tb = new CTipodeboletos();
+        if(sesion.getAttribute("Usuario")!=null){
+            String accion = request.getParameter("accion");
+            CTipodeboletos tb = new CTipodeboletos();
         if(accion.equals("Modificar")){        
             int id = (int)sesion.getAttribute("IdTipoBoletos");
             sesion.setAttribute("FormatoTipoBoletos",tb.MostrarTipodeboletos(id).getFormato());
@@ -42,6 +43,10 @@ public class Boleto extends HttpServlet {
             Double precio = Double.parseDouble(request.getParameter("precio"));
             tb.InsertarTipodeboletos(formato, tipo, precio);
             response.sendRedirect("Principal?op=6");
+        }
+        }
+        else{
+            request.getRequestDispatcher("sesion.jsp").forward(request, response);
         }
     }
 

@@ -32,10 +32,10 @@
                 </c:if>
             </center>
             <br>
-            <p>¿no tienes una cuenta?</p>
+            <!--<p>¿no tienes una cuenta?</p>
             <br>
             <a href="Registro.jsp">Registrarse</a>
-            <br><p class="punt">.</p>
+            <br><p class="punt">.</p>-->
         </div>
     </body>
 </html>
