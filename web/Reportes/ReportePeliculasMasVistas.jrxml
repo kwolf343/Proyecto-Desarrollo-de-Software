@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3b1f1548-1bba-49a1-8cb5-5342530ed468">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="peliculas" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select count(pro.idpelicula) as vistas, pel.titulo as pelicula from peliculas pel, proyecciones pro where pro.idpelicula = pel.idpelicula and pel.titulo = $P{peliculas} group by pel.titulo;]]>
+	</queryString>
+	<field name="vistas" class="java.lang.Integer"/>
+	<field name="pelicula" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="79" forecolor="#0000CC" uuid="bd60601b-822f-484a-9914-963f59044a7e"/>
+				<textElement textAlignment="Center">
+					<font size="36"/>
+				</textElement>
+				<text><![CDATA[PELICULAS MAS VISTAS]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="24" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="40" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="199" y="3" width="321" height="37" forecolor="#0033CC" backcolor="#33CCFF" uuid="7c59de40-f333-4fd1-8012-1398a08b1081"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PELICULAS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="23" y="3" width="175" height="37" forecolor="#000099" backcolor="#33CCFF" uuid="1b1690cf-40e2-467c-8323-cc352feca91b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[VISTAS]]></text>
+			</staticText>
+			<line>
+				<reportElement x="520" y="0" width="1" height="40" uuid="3fb410e3-cfea-4006-b260-c50cf4f18f76"/>
+			</line>
+			<line>
+				<reportElement x="198" y="2" width="1" height="38" uuid="04c4b0d3-f7db-4a37-868f-1d443c7436d6"/>
+			</line>
+			<line>
+				<reportElement x="22" y="2" width="1" height="38" uuid="ea778b38-529c-4afb-89ea-e59d702b6784"/>
+			</line>
+			<line>
+				<reportElement x="21" y="2" width="499" height="1" uuid="b66406c3-e4d3-4e1f-b957-0b7578c53f3a"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="59" splitType="Stretch">
+			<textField>
+				<reportElement x="199" y="2" width="322" height="56" uuid="8ab26f63-de62-4703-b7e7-a6a78a1c186f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pelicula}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="23" y="2" width="175" height="56" uuid="6aa2ac46-c8cb-466c-a96d-de105953757d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{vistas}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="22" y="58" width="498" height="1" uuid="b3f5c662-9c49-4052-9c2c-dc1ad5d0a134"/>
+			</line>
+			<line>
+				<reportElement x="198" y="0" width="1" height="58" uuid="ff0de18c-8615-4c4c-b1b1-c5adbd6c4910"/>
+			</line>
+			<line>
+				<reportElement x="22" y="0" width="1" height="58" uuid="075489ef-5744-4511-9103-996025ea6e27"/>
+			</line>
+			<line>
+				<reportElement x="23" y="0" width="100" height="1" uuid="2ff9480c-17f8-4cf6-a9b5-27f7927888cb"/>
+			</line>
+			<line>
+				<reportElement x="521" y="2" width="1" height="56" uuid="400490ff-8624-455e-8aa1-b6b53d653c8d"/>
+			</line>
+			<line>
+				<reportElement x="23" y="1" width="497" height="1" uuid="210ae3fc-ddc1-44da-843c-af4a84d459f4"/>
+			</line>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="40" splitType="Stretch">
+			<line>
+				<reportElement x="520" y="-68" width="1" height="58" uuid="ddf47f5b-b963-4191-ae5a-e83aaf2a04bf"/>
+			</line>
+		</band>
+	</pageFooter>
+</jasperReport>
