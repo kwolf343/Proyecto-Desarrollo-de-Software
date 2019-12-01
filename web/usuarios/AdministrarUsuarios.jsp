@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="css/estilos.css" type="text/css"><link>
         <link rel="stylesheet" href="css/Administracion.css" type="text/css"><link>
         <link rel="stylesheet" href="css/AdministrarUsuarios.css" type="text/css"><link>
+        <link rel="stylesheet" href="css/Registro.css" type="text/css"><link>
         <title>Usuarios</title>
     </head>
     <body>
@@ -16,10 +17,18 @@
         </div>
         <div class="izquierdo">
             <%@include file="/MenuPrincipal.jsp"%>
+            <br><br>
+            <div class="insercion">
+                <a href="Usuario?accion=nuevo"><h2>Nuevo usuario</h2></a>
+            </div>
         </div>
         <div class="derecho">
-            <%@include file="Usuarios.jsp"%>
+            <c:if test="${InsertarBoleto!=true}">
+                <%@include file="Usuarios.jsp"%>
+            </c:if>
+            <c:if test="${InsertarBoleto==true}">
+                <%@include file="/Registro.jsp"%>
+            </c:if>
         </div>
-        
     </body>
 </html>

@@ -32,7 +32,6 @@ public class Principal extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession sesion = request.getSession();
-        if(sesion.getAttribute("Usuario")!=null){
         if(sesion.getAttribute("Usuario")==null){
             request.getRequestDispatcher("/index.jsp").forward(request, response);
         }
@@ -65,10 +64,6 @@ public class Principal extends HttpServlet {
             request.getRequestDispatcher("Administrar.jsp").forward(request, response);
         }else if (accion.equals("logout")){
             logout(request, response);
-        }
-    }
-        else{
-            request.getRequestDispatcher("sesion.jsp").forward(request, response);
         }
     }
 

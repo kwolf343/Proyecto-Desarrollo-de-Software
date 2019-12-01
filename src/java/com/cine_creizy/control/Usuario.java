@@ -30,8 +30,16 @@ public class Usuario extends HttpServlet {
                 sesion.setAttribute("vacio",false);
                 response.sendRedirect("Principal?op=7");
             }
-            
             }
+        if(accion.equals("nuevo")){
+            sesion.setAttribute("InsertarBoleto",true);
+            response.sendRedirect("Principal?op=7");
+        }
+        if(accion.equals("cancelar")){
+            sesion.setAttribute("vacio",false);
+            sesion.setAttribute("InsertarBoleto",false);
+            response.sendRedirect("Principal?op=7");
+        }
         }
         else{
             request.getRequestDispatcher("sesion.jsp").forward(request, response);

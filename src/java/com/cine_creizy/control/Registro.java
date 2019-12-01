@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class Registro extends HttpServlet {
 
@@ -24,6 +25,8 @@ public class Registro extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession sesion = request.getSession();
+        if(sesion.getAttribute("Usuario")!=null){
         String usuario = request.getParameter("usuario");
         String nombre = request.getParameter("nombre");
         String apellido = request.getParameter("apellido");
@@ -34,17 +37,12 @@ public class Registro extends HttpServlet {
         int idpais = Integer.parseInt(pais);
         CUsuario u = new CUsuario();
         u.InsertarUsuario(usuario, nombre, apellido, email, clave, idpais, 2);
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Registro</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Bienbenido "+nombre+" "+apellido+"</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        sesion.setAttribute("InsertarBoleto",false);
+        sesion.setAttribute("vacio",false);
+        response.sendRedirect("Principal?op=7");
+        }
+        else{
+            request.getRequestDispatcher("sesion.jsp").forward(request, response);
         }
     }
     @Override
