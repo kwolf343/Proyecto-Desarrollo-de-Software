@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="39de6bc7-3a27-4a57-add2-48d8dbfb611f">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="comida" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select vc.idusuario, c.nombre as comida, dc.cantidadcomida as cantidad, dc.total as total from detalleVentaComida dc, comidas c, ventaComida vc where dc.idcomida = c.idcomida and vc.idventaComida = dc.idventaComida and c.nombre = $P{comida} order by dc.total asc]]>
+	</queryString>
+	<field name="idusuario" class="java.lang.String"/>
+	<field name="comida" class="java.lang.String"/>
+	<field name="cantidad" class="java.lang.Integer"/>
+	<field name="total" class="java.lang.Double"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="79" forecolor="#0000CC" uuid="4a2dcc31-6ccd-4dd7-82cc-31d2002b2422"/>
+				<textElement textAlignment="Center">
+					<font size="36"/>
+				</textElement>
+				<text><![CDATA[Reporte de ventas]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="15" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="27" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" forecolor="#0000CC" uuid="46cb936a-bc6c-47c2-8e60-99709f8a8e91"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[IDUSUARIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="130" y="2" width="100" height="20" forecolor="#0000CC" uuid="f9deb280-a815-4550-b22d-8019d2d0b5a8"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[COMIDA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="264" y="0" width="100" height="20" forecolor="#0000CC" uuid="0d73e376-795e-41e0-a214-e6eae04c6ef4"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[CANTIDAD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="437" y="0" width="100" height="20" forecolor="#0000CC" uuid="71c59888-2eec-40de-9df3-24aec5c254a6"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[TOTAL]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="25" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20" uuid="924fdad0-673a-4fb8-9594-195f01c416dd"/>
+				<textFieldExpression><![CDATA[$F{idusuario}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="130" y="0" width="100" height="20" uuid="21363b70-373a-444a-8766-f3dedbe5c9a5"/>
+				<textFieldExpression><![CDATA[$F{comida}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="264" y="0" width="100" height="20" uuid="17aebab4-51ae-4ac6-9f41-3898e8dc1139"/>
+				<textFieldExpression><![CDATA[$F{cantidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="437" y="0" width="100" height="20" uuid="5f5cd7d4-b4f7-4207-bebc-8d819f173a9f"/>
+				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="31" splitType="Stretch"/>
+	</pageFooter>
+</jasperReport>
