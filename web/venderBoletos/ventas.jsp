@@ -12,7 +12,7 @@
     <body>
         <%@include file="/user.jsp"%>
         <div class="col-12 titulo">
-            <h2>Vender Comida</h2>
+            <h2>Vender Boletos</h2>
         </div>
         <div class="izquierdo">
             <%@include file="/MenuPrincipal.jsp"%>
@@ -107,7 +107,14 @@
                     <div class="col-12 tres">
                         <div class="col-12 f3">
                         <h1>Paso 3</h1><br><br>
-                        <h2>Asientos</h2><br><br>
+                        <div class="claseDeAsiento">
+                            <h2>Asientos </h2>
+                            <h2 style="color: rgb(43,54,86)">Sala ${estaSala.MostrarSalas(estaProyeccion.MostrarProyecciones(IdBoleto).getIdsala()).getSala()} </h2>
+                            <form name="v" action="VentasBoletos?accion=limpiar" method="POST">
+                                <input type="submit" value="Limpiar" name="limpiar"/>
+                            </form>
+                        </div>
+                        <br><br>
                             <div class="col-12 columnas">
                                 <div class="aLaIzquierda"></div>
                                 <div class="alCentro">

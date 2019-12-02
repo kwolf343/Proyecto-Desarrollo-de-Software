@@ -128,3 +128,10 @@
 .as2{
     background: rgb(176,43,23);
 }
+.claseDeAsiento{
+    display: flex;
+    justify-content: space-around;
+}
+.claseDeAsiento input{
+    padding: 5%;
+}
