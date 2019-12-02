@@ -25,7 +25,12 @@ public class Usuario extends HttpServlet {
             else{
                 String[] usuarios = request.getParameterValues("check");
                 for(int i=0; i<usuarios.length;i++){
-                    u.BorrarUsuario(usuarios[i]);
+                    if(u.MostrarUsuario(usuarios[i]).getIdusuario().equals((String) sesion.getAttribute("Usuario"))){
+                        sesion.setAttribute("restriccionU", true);
+                    }
+                    else{
+                        u.BorrarUsuario(usuarios[i]);
+                    }
                 }
                 sesion.setAttribute("vacio",false);
                 response.sendRedirect("Principal?op=7");

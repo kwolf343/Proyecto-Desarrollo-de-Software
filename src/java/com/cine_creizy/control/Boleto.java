@@ -41,7 +41,22 @@ public class Boleto extends HttpServlet {
             String formato = request.getParameter("formato");
             String tipo = request.getParameter("tipo");
             Double precio = Double.parseDouble(request.getParameter("precio"));
-            tb.InsertarTipodeboletos(formato, tipo, precio);
+            boolean tipoblt = false; 
+            for(int i=0;i<tb.MostrarTodoTipodeboletos().size();i++){
+                if(tb.MostrarTodoTipodeboletos().get(i).getFormato().toUpperCase().equals(formato.toUpperCase())){
+                    if(tb.MostrarTodoTipodeboletos().get(i).getTipo().toUpperCase().equals(tipo.toUpperCase())){
+                        tipoblt = true;
+                    }
+                }
+            }
+            if(tipoblt==true){
+                sesion.setAttribute("tipo123",true);
+            }
+            else{
+                tb.InsertarTipodeboletos(formato, tipo, precio);
+                sesion.setAttribute("tipo123",false);
+            }
+            
             response.sendRedirect("Principal?op=6");
         }
         }

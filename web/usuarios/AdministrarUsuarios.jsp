@@ -28,6 +28,7 @@
             </c:if>
             <c:if test="${InsertarBoleto==true}">
                 <%@include file="/Registro.jsp"%>
+                <div style="display: none">${InsertarBoleto=false}</div>
             </c:if>
         </div>
     </body>

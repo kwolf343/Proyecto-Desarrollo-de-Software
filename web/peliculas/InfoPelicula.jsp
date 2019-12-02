@@ -32,6 +32,10 @@
                     <a href="Pelis?accion=BorraPelicula"><center><img src="imagenes/Borrar.png" width="10%"></img></center></a>
                 </div>
             </div>
+                <c:if test="${peliculacomp==true}">
+                    <p><br><strong style="color: red">La pelicula no pudo actualizarse por que ya existe otra con el mismo nombre en el registro del cine</strong></p>
+                    <div style="display: none">${peliculacomp=false}</div>
+                </c:if>
         </div>
     </body>
 </html>
