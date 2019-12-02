@@ -8,7 +8,6 @@
         <link rel="stylesheet" href="css/venderBoletos.css" type="text/css"><link>
         <title>Vender Boletos</title>
     </head>
-    
     <body>
         <%@include file="/user.jsp"%>
         <div class="col-12 titulo">
