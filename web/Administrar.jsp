@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="css/Administrar.css" type="text/css"><link>
         <title>Cine Creizy</title>
     </head>
+    
     <body>
         <%@include file="user.jsp"%>
         <div class="col-12 titulo">
