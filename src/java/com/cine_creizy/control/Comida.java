@@ -22,7 +22,19 @@ public class Comida extends HttpServlet {
             String nombre = request.getParameter("nombre");
             String precio = request.getParameter("precio");
             String existencias = request.getParameter("existencias");
-            c.ActualizarComidas((int)sesion.getAttribute("IdComida"),nombre,Double.parseDouble(precio), Integer.parseInt(existencias));
+            boolean nombrecom = false;
+            for(int i=0;i<c.MostrarTodoComidas().size();i++){
+                if(c.MostrarTodoComidas().get(i).getNombre().toUpperCase().equals(nombre.toUpperCase())){
+                    nombrecom = true;
+                }
+            }
+            if(nombrecom==true){
+                sesion.setAttribute("nombrecom",true);
+            }
+            else{
+                c.ActualizarComidas((int)sesion.getAttribute("IdComida"),nombre,Double.parseDouble(precio), Integer.parseInt(existencias));
+                sesion.setAttribute("nombrecom",false);
+            } 
             response.sendRedirect("Principal?op=5");
         }
         else if(accion.equals("Modificar")){
@@ -43,7 +55,19 @@ public class Comida extends HttpServlet {
             String nombre = request.getParameter("checkNombre");
             String precio = request.getParameter("checkPrecio");
             String existencias = request.getParameter("checkExistencias");
-            c.InsertarComida(nombre, Double.parseDouble(precio),Integer.parseInt(existencias));
+            boolean nombrecom = false;
+            for(int i=0;i<c.MostrarTodoComidas().size();i++){
+                if(c.MostrarTodoComidas().get(i).getNombre().toUpperCase().equals(nombre.toUpperCase())){
+                    nombrecom = true;
+                }
+            }
+            if(nombrecom==true){
+                sesion.setAttribute("nombrecom",true);
+            }
+            else{
+                c.InsertarComida(nombre, Double.parseDouble(precio),Integer.parseInt(existencias));
+                sesion.setAttribute("nombrecom",false);
+            }
             response.sendRedirect("Principal?op=5");
         }
         else if(accion.equals("Borrar")){

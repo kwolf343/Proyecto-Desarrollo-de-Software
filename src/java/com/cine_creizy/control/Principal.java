@@ -46,20 +46,74 @@ public class Principal extends HttpServlet {
             if(op!=null){
                 List<Menu> PermisosAsignados = per.stream().filter(field -> field.getIdpadre()==Integer.parseInt(op)).collect(Collectors.toList());
                 request.setAttribute("PermisosAsignados", PermisosAsignados);
-            if(op.equals("1")){request.getRequestDispatcher("venderBoletos/ventas.jsp").forward(request, response);}
-            if(op.equals("2")){request.getRequestDispatcher("venderComida/ventas.jsp").forward(request, response);}
-            if(op.equals("3")){request.getRequestDispatcher("peliculas/AdministrarPeliculas.jsp").forward(request, response);}
-            if(op.equals("4")){request.getRequestDispatcher("cartelera/AdministrarCartelera.jsp").forward(request, response);}
-            if(op.equals("5")){request.getRequestDispatcher("comidas/AdministrarComida.jsp").forward(request, response);}
-            if(op.equals("6")){request.getRequestDispatcher("boletos/AdministrarBoletos.jsp").forward(request, response);}
-            if(op.equals("7")){request.getRequestDispatcher("usuarios/AdministrarUsuarios.jsp").forward(request, response);}
-            if(op.equals("8")){request.getRequestDispatcher("comidas/ActualizaComida.jsp").forward(request, response);}
-            if(op.equals("9")){request.getRequestDispatcher("peliculas/InfoPelicula.jsp").forward(request, response);}
-            if(op.equals("10")){request.getRequestDispatcher("peliculas/ActualizaPelicula.jsp").forward(request, response);}
-            if(op.equals("11")){request.getRequestDispatcher("peliculas/AgregaPelicula.jsp").forward(request, response);}
-            if(op.equals("12")){request.getRequestDispatcher("boletos/ActualizarBoletos.jsp").forward(request, response);}
-            if(op.equals("13")){request.getRequestDispatcher("cartelera/MostrarCartelera.jsp").forward(request, response);}
-            if(op.equals("14")){request.getRequestDispatcher("cartelera/ActualizarCartelera.jsp").forward(request, response);}
+                switch(op){
+                    case "1":
+                        Anular(request, response);
+                        request.getRequestDispatcher("venderBoletos/ventas.jsp").forward(request, response);
+                        break;
+                    case "2":
+                        Anular(request, response);
+                        request.getRequestDispatcher("venderComida/ventas.jsp").forward(request, response);
+                        break;
+                    case "3":
+                        Anular(request, response);
+                        request.getRequestDispatcher("peliculas/AdministrarPeliculas.jsp").forward(request, response);
+                        break;
+                    case "4":
+                        Anular(request, response);
+                        request.getRequestDispatcher("cartelera/AdministrarCartelera.jsp").forward(request, response);
+                        break;
+                    case "5":
+                        Anular(request, response);
+                        request.getRequestDispatcher("comidas/AdministrarComida.jsp").forward(request, response);
+                        break;
+                    case "6":
+                        Anular(request, response);
+                        request.getRequestDispatcher("boletos/AdministrarBoletos.jsp").forward(request, response);
+                        break;
+                    case "7":
+                        request.getRequestDispatcher("usuarios/AdministrarUsuarios.jsp").forward(request, response);
+                        break;
+                    case "8":
+                        if(sesion.getAttribute("comida")==null)
+                            request.getRequestDispatcher("comidas/AdministrarComida.jsp").forward(request, response);
+                        else
+                            request.getRequestDispatcher("comidas/ActualizaComida.jsp").forward(request, response);
+                        break;
+                    case "9":
+                        if(sesion.getAttribute("IdPelicula")==null)
+                            request.getRequestDispatcher("peliculas/AdministrarPeliculas.jsp").forward(request, response);
+                        else
+                            request.getRequestDispatcher("peliculas/InfoPelicula.jsp").forward(request, response);
+                        break;
+                    case "10":
+                        if(sesion.getAttribute("IdPelicula")==null)
+                            request.getRequestDispatcher("peliculas/AdministrarPeliculas.jsp").forward(request, response);
+                        else
+                            request.getRequestDispatcher("peliculas/ActualizaPelicula.jsp").forward(request, response);
+                        break;
+                    case "11":
+                        request.getRequestDispatcher("peliculas/AgregaPelicula.jsp").forward(request, response);
+                        break;
+                    case "12":
+                        if(sesion.getAttribute("FormatoTipoBoletos")==null)
+                            request.getRequestDispatcher("boletos/AdministrarBoletos.jsp").forward(request, response);
+                        else
+                        request.getRequestDispatcher("boletos/ActualizarBoletos.jsp").forward(request, response);
+                        break;
+                    case "13":
+                        if(sesion.getAttribute("IdCartelera")==null)
+                            request.getRequestDispatcher("cartelera/AdministrarCartelera.jsp").forward(request, response);
+                        else
+                            request.getRequestDispatcher("cartelera/MostrarCartelera.jsp").forward(request, response);
+                        break;
+                    case "14":
+                        if(sesion.getAttribute("IdCartelera")==null)
+                            request.getRequestDispatcher("cartelera/AdministrarCartelera.jsp").forward(request, response);
+                        else
+                            request.getRequestDispatcher("cartelera/ActualizarCartelera.jsp").forward(request, response);
+                        break;
+                }
             }
             request.getRequestDispatcher("Administrar.jsp").forward(request, response);
         }else if (accion.equals("logout")){
@@ -76,7 +130,6 @@ public class Principal extends HttpServlet {
         sesion.invalidate();
         response.sendRedirect("Login");
     }
-    
     private void CargarRecursos(HttpServletRequest request, HttpServletResponse response){
         HttpSession sesion = request.getSession();
         CUsuario u = new CUsuario();
@@ -100,6 +153,13 @@ public class Principal extends HttpServlet {
         sesion.setAttribute("estaComida",c);
         sesion.setAttribute("estaProyeccion",pro);
         Proyeccion(request, response);
+    }
+    private void Anular(HttpServletRequest request, HttpServletResponse response){
+        HttpSession sesion = request.getSession();
+        sesion.setAttribute("IdPelicula", null);
+        sesion.setAttribute("IdCartelera",null);
+        sesion.setAttribute("comida", null);
+        sesion.setAttribute("FormatoTipoBoletos", null);
     }
     private void Proyeccion(HttpServletRequest request, HttpServletResponse response){
         HttpSession sesion = request.getSession();

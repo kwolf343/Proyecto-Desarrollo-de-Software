@@ -19,7 +19,12 @@
         </div>
         <div class="derecho">
             <div class="a">
-                <h2>Comidas</h2>
+                <div class="busca">
+                    <h2>Comidas</h2>
+                    <form name="comp" action="Ventas?accion=buscar" method="POST">
+                        <h2><input type="text" name="buscar" required><input type="submit" value="Buscar" name="Comprar"/></h2>
+                    </form>
+                </div>
                 <div class="col-12 comida">
                     <ul>
                         <li class="c"><center>Comida</center></li>
@@ -30,6 +35,7 @@
                     </ul>
                 </div>
                 <div class="col-12 comida2">
+                    <c:if test="${buscarComida!=true}">
                     <c:forEach var="comer" items="${ListaComidas}">
                         <form name="comp" action="redirecciona?accion=${7000+comer.getIdcomida()}" method="POST">
                         <ul>
@@ -41,6 +47,19 @@
                         </ul>
                         </form>
                     </c:forEach>
+                    </c:if>
+                    <c:if test="${buscarComida==true}">
+                        <form name="comp" action="redirecciona?accion=${7000+comerC.getIdcomida()}" method="POST">
+                        <ul>
+                            <li class="c">${comerC.getNombre()}</li>
+                            <li class="d"><center>$${comerC.getPrecio()}</center></li>
+                            <li class="d"><center>${comerC.getExistencia()}</center></li>
+                            <li class="e"><center><input type="number" name="cantidad" min="1" max="${comerC.getExistencia()}" required></center></li>
+                            <li class="f"><center><input type="submit" value="agregar" name="Comprar"/></center></li>
+                        </ul>
+                        </form>
+                        <div style="display: none">${buscarComida=false}</div>
+                    </c:if>
                 </div>
             </div>
             <div class="b">

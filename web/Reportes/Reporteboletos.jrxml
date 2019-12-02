@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="de66b562-f213-48f5-b1c5-de2391556ba1">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="usuario" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select count(v.idusuario) as boletos, u.idusuario , u.nombres as usuario from usuario u, ventaboletos v where v.idusuario = u.idusuario and v.idusuario = $P{usuario} group by u.idusuario, u.nombres ;]]>
+	</queryString>
+	<field name="boletos" class="java.lang.Integer"/>
+	<field name="idusuario" class="java.lang.String"/>
+	<field name="usuario" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="66" splitType="Stretch">
+			<staticText>
+				<reportElement x="16" y="0" width="523" height="66" forecolor="#0033CC" uuid="bb26bef5-79b8-489c-b711-b35afc8b4484"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="36"/>
+				</textElement>
+				<text><![CDATA[VENTA DE BOLETOS]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="48" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="72" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="16" y="13" width="167" height="59" backcolor="#33CCFF" uuid="2ce190a4-9559-4580-863f-74eb56408979"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[BOLETOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="184" y="13" width="201" height="59" backcolor="#33CCFF" uuid="9536a605-79b2-471d-897c-7777471bdffe"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[IDUSUARIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="385" y="13" width="154" height="59" backcolor="#33CCFF" uuid="bada60d3-2368-483d-a781-fc2230ba814e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[USUARIO]]></text>
+			</staticText>
+			<line>
+				<reportElement x="15" y="12" width="524" height="1" uuid="4ef97ce5-ef05-4757-82df-0248c0e3841e"/>
+			</line>
+			<line>
+				<reportElement x="15" y="12" width="1" height="60" uuid="3154f291-d837-4696-894e-fb2ff03d4c47"/>
+			</line>
+			<line>
+				<reportElement x="183" y="13" width="1" height="59" uuid="5b757eb4-5d8d-43d9-87e2-3a60d4feb8f7"/>
+			</line>
+			<line>
+				<reportElement x="539" y="13" width="1" height="59" uuid="dd7316fa-8730-4651-87ee-4b3cf5ad109d"/>
+			</line>
+			<line>
+				<reportElement x="384" y="13" width="1" height="59" uuid="42090604-b3e4-4370-b459-5245093ba14d"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="66" splitType="Stretch">
+			<textField>
+				<reportElement x="16" y="1" width="167" height="64" uuid="2374b2bc-f8f6-43db-acb6-bff7d0846b67"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{boletos}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="184" y="1" width="199" height="64" uuid="cbe6a91f-eb00-45c9-8fac-04ae08087d19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{idusuario}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="385" y="1" width="154" height="64" uuid="41ded54c-c285-466c-b137-15813a8ccfc3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{usuario}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="14" y="65" width="525" height="1" uuid="2eb11cc3-8649-47a5-9b7c-b87980abb533"/>
+			</line>
+			<line>
+				<reportElement x="14" y="0" width="1" height="66" uuid="6a253405-7519-4d05-a972-5a66c1d27661"/>
+			</line>
+			<line>
+				<reportElement x="183" y="0" width="1" height="66" uuid="7d5bae49-b3c5-43dd-af10-6cfe799350cf"/>
+			</line>
+			<line>
+				<reportElement x="383" y="1" width="1" height="64" uuid="cf6b3d89-0c3c-4937-8927-8b9f75971ebe"/>
+			</line>
+			<line>
+				<reportElement x="540" y="1" width="1" height="64" uuid="77b05920-db07-4ceb-84ac-0a00008b1002"/>
+			</line>
+			<line>
+				<reportElement x="15" y="0" width="525" height="1" uuid="910733da-2dd9-4cc9-98d3-85c4ad4964c6"/>
+			</line>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="48" splitType="Stretch"/>
+	</pageFooter>
+</jasperReport>

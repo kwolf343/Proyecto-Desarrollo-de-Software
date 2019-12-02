@@ -41,6 +41,10 @@
                     </ul>
                 </c:forEach>
             </div>
+            <c:if test="${proyecomp==true}">
+                <p class="mensaje1"><br><strong style="color: red">La pelicula no pudo borrarse ya que se encuentra en cartelera</strong></p>
+                <div style="display: none">${proyecomp=false}</div>
+            </c:if>
         </div>
     </body>
 </html>

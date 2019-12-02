@@ -21,9 +21,9 @@
                 <form name="actualizau" action="Comida?accion=ActualizaComida" method="POST">
                     <h4>Actualizar ${comida}</h4>
                     <br>
-                    <div class="col-6">Nombre: </div><div class="caja"><input type="text" name="nombre"></div>
-                    <div class="col-6">Precio: </div><div class="caja"><input type="number" step="0.01" name="precio"></div>
-                    <div class="col-6">Existencias: </div><div class="caja"><input type="number" name="existencias"></div>
+                    <div class="col-6">Nombre: </div><div class="caja"><input type="text" name="nombre" required></div>
+                    <div class="col-6">Precio: </div><div class="caja"><input type="number" step="0.01" name="precio" required></div>
+                    <div class="col-6">Existencias: </div><div class="caja"><input type="number" name="existencias" required></div>
                     <br>
                     <div class="boton"><input type="submit" value="Actualizar" name="enviar"/></div>
                 </form>

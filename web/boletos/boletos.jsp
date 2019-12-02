@@ -25,10 +25,16 @@
     <form name="bol" action="Boleto?accion=AgregaBoleto" method="POST">
         <ul>
         <li class="idB">a</li>
-        <li class="f"><input type="text" name="formato"></li>
-        <li class="t"><input type="text" name="tipo"></li>
-        <li class="p"><input type="number" step="0.01" name="precio"></li>
+        <li class="f"><input type="text" name="formato" required></li>
+        <li class="t"><input type="text" name="tipo" required></li>
+        <li class="p"><input type="number" step="0.01" name="precio" required></li>
         <li class="btn"><input type="submit" value="Agregar" name="enviar"/></li>
     </ul>
     </form>
+</div>
+<div>
+    <c:if test="${tipo123==true}">
+        <p><br><strong style="color: red">Error de inserción, Tipo de boleto ya existente</strong></p>
+        <div style="display: none">${tipo123=false}</div>
+    </c:if>
 </div>

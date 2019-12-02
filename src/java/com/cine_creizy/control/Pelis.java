@@ -1,6 +1,7 @@
 package com.cine_creizy.control;
 
 import com.cine_creizy.CRUD.CPeliculas;
+import com.cine_creizy.CRUD.CProyecciones;
 import com.cine_creizy.entidad.Peliculas;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -18,9 +19,19 @@ public class Pelis extends HttpServlet {
         if(sesion.getAttribute("Usuario")!=null){
         String accion = request.getParameter("accion");
         Peliculas peli = new Peliculas();
-        CPeliculas p = new CPeliculas();   
+        CPeliculas p = new CPeliculas();
+        CProyecciones proyeccion = new CProyecciones();
         if(accion.equals("BorraPelicula")){
             int n = (int)sesion.getAttribute("IdPelicula");
+            boolean proyecomp = false;
+            for(int i=0;i<proyeccion.MostrarTodoProyecciones().size();i++){
+                if(proyeccion.MostrarTodoProyecciones().get(i).getIdpelicula()==n){
+                    proyecomp = true;
+                }
+            }
+            if(proyecomp==true){
+                sesion.setAttribute("proyecomp",true);
+            }
             p.BorrarPelicula(n);
             response.sendRedirect("Principal?op=3");
         }        
@@ -47,14 +58,26 @@ public class Pelis extends HttpServlet {
             String estreno = request.getParameter("estreno");
             String salida = request.getParameter("salida");
             String sinopsis = request.getParameter("sinopsisP");
-            p.ActualizarPelicula(n, titulo,hora+":"+minuto+":"+segundo, sinopsis, clasificacion, generos, estreno, salida);
-            sesion.setAttribute("TituloPeli",titulo);
-            sesion.setAttribute("DuracionPeli",hora+":"+minuto+":"+segundo);
-            sesion.setAttribute("SinopsisPeli",sinopsis);
-            sesion.setAttribute("ClasificacionPeli",clasificacion);
-            sesion.setAttribute("GenerosPeli",generos);
-            sesion.setAttribute("FechaLlegadaPeli",estreno);
-            sesion.setAttribute("FechaSalidaPeli",salida);
+            boolean peliculacomp=false;
+            for(int i=0;i<p.MostrarTodoPeliculas().size();i++){
+                if(p.MostrarTodoPeliculas().get(i).getTitulo().toUpperCase().equals(titulo.toUpperCase())){
+                    peliculacomp = true;
+                }
+            }
+            if(peliculacomp==true){
+                sesion.setAttribute("peliculacomp",true);
+            }
+            else{
+                p.ActualizarPelicula(n, titulo,hora+":"+minuto+":"+segundo, sinopsis, clasificacion, generos, estreno, salida);
+                sesion.setAttribute("TituloPeli",titulo);
+                sesion.setAttribute("DuracionPeli",hora+":"+minuto+":"+segundo);
+                sesion.setAttribute("SinopsisPeli",sinopsis);
+                sesion.setAttribute("ClasificacionPeli",clasificacion);
+                sesion.setAttribute("GenerosPeli",generos);
+                sesion.setAttribute("FechaLlegadaPeli",estreno);
+                sesion.setAttribute("FechaSalidaPeli",salida);
+                sesion.setAttribute("peliculacomp",false);
+            }
             response.sendRedirect("Principal?op=9");
         }
         if(accion.equals("Agregarpeli")){

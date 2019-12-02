@@ -24,11 +24,15 @@
     </c:forEach>
     <form name="agrega" action="Comida?accion=agregar" method="POST">
         <ul>
-            <li class="check1">a</li>
-            <li class="check2"><input type="text" name="checkNombre"></li>
-            <li class="check3"><input type="number" step="0.01" name="checkPrecio"></li>
-            <li class="check4"><input type="number" name="checkExistencias"></li>
+            <li class="check1">0</li>
+            <li class="check2"><input type="text" name="checkNombre" required></li>
+            <li class="check3"><input type="number" step="0.01" name="checkPrecio" required></li>
+            <li class="check4"><input type="number" name="checkExistencias" required></li>
             <li class="check5"><input type="submit" value="Agregar" name="enviar2"/></li>
         </ul>
     </form>
 </div>
+<c:if test="${nombrecom==true}">
+    <p><br><strong style="color: red">Error, la comida que desea agregar, ya se encuentra en el registro</strong></p>
+    <div style="display: none">${nombrecom=false}</div>
+</c:if>

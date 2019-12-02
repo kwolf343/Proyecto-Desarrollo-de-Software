@@ -33,6 +33,11 @@
     <div class="col-12 boton">
         <c:if test="${vacio==true}">
             <p><strong style="color: red">Error! ningun usuario seleccionado</strong></p>
+            <div style="display: none">${vacio=false}</div>
+        </c:if>
+        <c:if test="${restriccionU==true}">
+            <p><strong style="color: red">No se pudo borrar el usuario ${Usuario} debio a que está en uso, codigo de error #FFFA023</strong></p>
+            <div style="display: none">${restriccionU=false}</div>
         </c:if>
         <input type="submit" value="Borrar" name="enviar"/>
     </div>

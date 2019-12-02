@@ -27,6 +27,7 @@ public class VentasBoletos extends HttpServlet {
         CBoletos bol = new CBoletos();
         CVentaboletos vb = new CVentaboletos();
         CAsientos as = new CAsientos();
+        CProyecciones proyeccion = new CProyecciones();
         if(accion.equals("Horario")){
             sesion.setAttribute("HoraBoletos",true);
             sesion.setAttribute("TBoletos",true);
@@ -123,6 +124,22 @@ public class VentasBoletos extends HttpServlet {
             response.sendRedirect("Principal?op=1");
         }
         if(accion.equals("CancelarFinalizar")){
+            sesion.setAttribute("HoraBoletos",false);
+            sesion.setAttribute("TBoletos",false);
+            sesion.setAttribute("ABoletos",false);
+            sesion.removeAttribute("ListadoDeLosBoletos");
+            sesion.removeAttribute("ListadoDeLosNumeros");
+            sesion.setAttribute("Ventablts",false);
+            response.sendRedirect("Principal?op=1");
+        }
+        if(accion.equals("limpiar")){
+            int idproyecto = (int) sesion.getAttribute("IdBoleto");
+            int IdSala = proyeccion.MostrarProyecciones(idproyecto).getIdsala();
+            for(int i=0;i<as.MostrarTodoAsientos().size();i++){
+                if(IdSala == as.MostrarTodoAsientos().get(i).getIdsala()){
+                    as.ActualizarAsientos(i+1, as.MostrarTodoAsientos().get(i).getAsiento(), as.MostrarTodoAsientos().get(i).getIdsala(), 1);
+                }
+            }
             sesion.setAttribute("HoraBoletos",false);
             sesion.setAttribute("TBoletos",false);
             sesion.setAttribute("ABoletos",false);

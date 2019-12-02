@@ -94,6 +94,20 @@ public class Ventas extends HttpServlet {
             }
             response.sendRedirect("Principal?op=2");
         }
+        if(accion.equals("buscar")){
+            String busqueda = request.getParameter("buscar");
+            boolean MostraComida = false;
+            for(int i=0;i<c.MostrarTodoComidas().size();i++){
+                if(c.MostrarTodoComidas().get(i).getNombre().toUpperCase().equals(busqueda.toUpperCase())){
+                    sesion.setAttribute("comerC", c.MostrarTodoComidas().get(i));
+                    MostraComida = true;
+                }
+            }
+            if(MostraComida == true){
+                sesion.setAttribute("buscarComida", true);
+            }
+            response.sendRedirect("Principal?op=2");
+        }
     }
         else{
             request.getRequestDispatcher("sesion.jsp").forward(request, response);
