@@ -26,6 +26,7 @@
         <center><p>Cine Creizy ® Derechos Reservados. </p></center>
     
             </div>
+            <a href="${pageContext.servletContext.contextPath}/Reportes" target="_blank">Ver Reporte</a>
         </div>
         
         
