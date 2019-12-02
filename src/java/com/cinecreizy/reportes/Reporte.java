@@ -35,14 +35,14 @@ public class Reporte extends HttpServlet {
  //configuramos los parametros en una varible de tipo Map
  //que como un array
  Map parameters = new HashMap();
- parameters.put("comida", "Palomitas"
+ parameters.put("comida", "dulces"
          + "");
  //para agregar mas parametro solo llame el metodo put() varias veces
  byte[] bytes = null;
  try {
  bytes = JasperRunManager.runReportToPdf(reportFile.getPath(),parameters,conexion);
  } catch (JRException ex) {
- Logger.getLogger(Reportes.class.getName()).log(Level.SEVERE, null, ex);
+ Logger.getLogger(Reporte.class.getName()).log(Level.SEVERE, null, ex);
  }
  response.setContentType("application/pdf");
 
