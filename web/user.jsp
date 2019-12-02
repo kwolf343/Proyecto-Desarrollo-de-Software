@@ -1,0 +1,1 @@
+<div class="col-12 user">${Nombre} ${Apellido} <strong>[${ListaRoles.get(Rol-1).getRol()}]   </strong><a href="Principal?accion=logout">Cerrar sesión</a></div>

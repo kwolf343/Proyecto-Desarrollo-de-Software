@@ -1,0 +1,42 @@
+body{
+    background: url("../imagenes/textura.jpg");
+}
+.login{
+    font-family: Arial, sans-serif;
+    line-height: 18px;
+    text-align: center;
+    background: rgb(204,204,205);
+}
+h2{
+    background-color: rgb(43, 54, 86);
+    padding: 3%;
+    color: #fff;
+}
+label{
+    color: rgb(43, 54, 86);
+}
+#nombre, #contra{
+    display: inline-block;
+    width: 80%;
+    padding: 4px;
+}
+#boton{
+    background-color: rgb(43, 54, 86);
+    padding: 8px;
+    color: #fff;
+}
+.punt{
+    color: rgb(204,204,205);
+}
+.login a{
+    text-decoration: none;
+    color: rgb(43, 54, 86);
+}
+.login a:hover{
+    color: rgb(169, 156, 105);
+}
+@media screen and (min-width: 700px){/*Para pc*/
+    .login{
+        margin: 10% 25%;
+    }
+}

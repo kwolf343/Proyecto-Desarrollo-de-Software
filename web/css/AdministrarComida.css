@@ -1,0 +1,50 @@
+.comidas ul li{
+    float: left;
+    padding: 0.5%;
+    margin: 0 0.25%;
+    background: rgb(169,165,105);
+    color: #fff;
+}
+.id{
+    width: 7%;
+}
+.n{
+    width: 50%;
+}
+.p, .e, .m, .b{
+    width:10%;
+}
+.datos ul li{
+    float: left;
+    margin: 0 0.25%;
+    background: #fff;
+}
+.datos li{
+    padding: 0.7%;
+}
+.datos .n{
+    padding-left: 2%;
+}
+.datos .m:hover, .datos .b:hover{
+    background: rgb(220,218,194);
+}
+#botonA{
+    padding: 1%;
+}
+.check1{
+    color: #fff;
+    width: 7%;
+}
+.check2{
+    width: 50%;
+}
+.check3, .check4{
+    width: 10%;
+}
+.check5{
+    
+    width: 20.5%;
+}
+.check1 input,.check2 input,.check3 input, .check4 input, .check5 input {
+    width: 100%;
+}
