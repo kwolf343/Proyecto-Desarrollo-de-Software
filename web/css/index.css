@@ -1,5 +1,5 @@
 body{
-    background: url("../imagenes/textura.jpg");
+    background: url("../imagenes/fondo.jpg");
 }
 .login{
     font-family: Arial, sans-serif;
@@ -35,7 +35,7 @@ label{
 .login a:hover{
     color: rgb(169, 156, 105);
 }
-@media screen and (min-width: 700px){/*Para pc*/
+@media screen and (min-width: 700px){
     .login{
         margin: 10% 25%;
     }
