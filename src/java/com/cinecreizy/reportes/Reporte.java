@@ -22,6 +22,7 @@ import net.sf.jasperreports.engine.JasperRunManager;
 public class Reporte extends HttpServlet {
  protected void processRequest(HttpServletRequest request, HttpServletResponse response)
  throws ServletException, IOException {
+     String accion = request.getParameter("accion");
  //Creamos la conexion
  Conexion cn = new ConexionPool();
  cn.conectar();
@@ -30,13 +31,16 @@ public class Reporte extends HttpServlet {
  ServletContext context = request.getServletContext();
 
  //obtenemos el reporte (archivo .jasper) en un archivo de tipo file
- File reportFile = new File(context.getRealPath("/")+"Reportes/ReporteDeComidas.jasper");
+ File reportFile = null;
+ Map parameters = new HashMap();
+ if(accion.equals("comida")){
+     reportFile = new File(context.getRealPath("/")+"Reportes/ReporteDeComidas.jasper");
+    parameters.put("comida", "Dulces"
+            + "");
+ }
 
  //configuramos los parametros en una varible de tipo Map
  //que como un array
- Map parameters = new HashMap();
- parameters.put("comida", "Dulces"
-         + "");
  //para agregar mas parametro solo llame el metodo put() varias veces
  byte[] bytes = null;
  try {
