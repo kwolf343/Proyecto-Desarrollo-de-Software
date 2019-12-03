@@ -63,8 +63,12 @@
                     </li>
                     <li class="V"><input type="submit" value="Agregar" name="enviar"/></li>
                 </ul>
-                    </form>
+                </form>
             </div>
+            <form class="col-12 formu" name="ventaB" action="${pageContext.servletContext.contextPath}/Reportes?accion=sala" method="POST">
+                Reporte Salas   -    Sala: <input type="text" name="sal" required>
+                <input type="submit">
+            </form>
         </div>
     </body>
 </html>

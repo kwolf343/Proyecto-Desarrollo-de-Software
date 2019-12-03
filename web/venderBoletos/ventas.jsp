@@ -30,10 +30,11 @@
                                     <input type="submit" value="${item2.getHorainicio()}" name="v1"/>
                                 </form>
                             </c:forEach>
-                            <br><br>
+                            <br><br><br>
                         </c:forEach>
                     </div>
                 </div>
+                    
                 </c:if>
                 <c:if test="${TBoletos==true}">
                     <div class="col-12 dos">

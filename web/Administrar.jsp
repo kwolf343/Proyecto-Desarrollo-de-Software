@@ -25,11 +25,7 @@
             <center><h1>¡BIENVENIDOS!</h1></center>
            <br>
         <center><p>Cine Creizy ® Derechos Reservados. </p></center>
-            <a href="">Ver reportes</a>
             </div>
-        </div>
-        
-        
+        </div> 
     </body>
-    
 </html>

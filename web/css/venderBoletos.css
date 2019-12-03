@@ -135,3 +135,15 @@
 .claseDeAsiento input{
     padding: 5%;
 }
+#Reporte1{
+    margin-top: 1%;
+    padding: 2% 0;
+}
+#Reporte1 :hover{
+    background: rgb(169,165,105);
+}
+#Reporte1 a{
+    padding: 1%;
+    background: rgb(43,54,86);
+    color: #fff;
+}

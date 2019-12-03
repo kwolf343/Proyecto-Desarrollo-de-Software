@@ -41,6 +41,10 @@
                     </ul>
                 </c:forEach>
             </div>
+            <form class="col-12 formu" name="ventaB" action="${pageContext.servletContext.contextPath}/Reportes?accion=pelicula" method="POST">
+                Reporte Peliculas   -    Pelicula: <input type="text" name="peli" required>
+                <input type="submit">
+            </form>
             <c:if test="${proyecomp==true}">
                 <p class="mensaje1"><br><strong style="color: red">La pelicula no pudo borrarse ya que se encuentra en cartelera</strong></p>
                 <div style="display: none">${proyecomp=false}</div>

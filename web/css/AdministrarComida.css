@@ -48,3 +48,8 @@
 .check1 input,.check2 input,.check3 input, .check4 input, .check5 input {
     width: 100%;
 }
+.formu{
+    padding: 1%;
+    background: rgb(43,54,86);
+    color: #fff;
+}

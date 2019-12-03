@@ -38,3 +38,7 @@
         <div style="display: none">${tipo123=false}</div>
     </c:if>
 </div>
+<form class="col-12 formu" name="ventaB" action="${pageContext.servletContext.contextPath}/Reportes?accion=boletos" method="POST">
+    Reporte Boletos   -    Usuario: <input type="text" name="user" required>
+    <input type="submit">
+</form>

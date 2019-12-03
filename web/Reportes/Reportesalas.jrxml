@@ -19,7 +19,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="30"/>
 				</textElement>
-				<text><![CDATA[LAS SALAS CON PROYECIONES]]></text>
+				<text><![CDATA[Salas por función]]></text>
 			</staticText>
 		</band>
 	</title>
