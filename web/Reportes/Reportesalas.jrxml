@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7be83903-ed97-4bcd-b4e9-ff715e755d9f">
+	<property name="ireport.zoom" value="1.610510000000001"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="salas" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select count(p.idsala) as funciones, s.sala as sala from salas s, proyecciones p where s.idsala = p.idsala and s.sala = $P{salas} group by s.sala;]]>
+	</queryString>
+	<field name="funciones" class="java.lang.Integer"/>
+	<field name="sala" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="79" forecolor="#000099" uuid="ff9a27cc-4790-4c59-9199-cbfabd818584"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="30"/>
+				</textElement>
+				<text><![CDATA[Salas por función]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="66" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="12" y="9" width="261" height="57" forecolor="#000000" backcolor="#33CCFF" uuid="337be09f-907c-40b9-aafb-992f02038fe7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[FUNCIONES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="273" y="10" width="255" height="56" forecolor="#000000" backcolor="#33CCFF" uuid="f70b7de6-0847-4649-bef7-773da8a119e4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[SALAS]]></text>
+			</staticText>
+			<line>
+				<reportElement x="10" y="9" width="518" height="1" uuid="471905ce-1486-4467-a349-464236aad000"/>
+			</line>
+			<line>
+				<reportElement x="528" y="10" width="1" height="56" uuid="351de408-5348-4b7d-9ca4-b0bc716ed241"/>
+			</line>
+			<line>
+				<reportElement x="10" y="10" width="1" height="56" uuid="a4033c15-7613-4beb-9b92-2003b35ea449"/>
+			</line>
+			<line>
+				<reportElement x="272" y="9" width="1" height="57" uuid="70a18292-a22c-4dbe-b5f7-acbe51a9959c"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="57" splitType="Stretch">
+			<textField>
+				<reportElement x="12" y="1" width="259" height="55" uuid="a3b665b5-c954-4f36-9f1d-ad5cc7746e81"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{funciones}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="273" y="1" width="255" height="55" uuid="362bcef7-4f38-4db9-b229-13959e5e0d8c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sala}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="11" y="56" width="517" height="1" uuid="83bf3613-029a-48d5-a615-0d083bd36743"/>
+			</line>
+			<line>
+				<reportElement x="10" y="0" width="1" height="56" uuid="1de775c4-d319-48dd-aebd-4def6ae80bc4"/>
+			</line>
+			<line>
+				<reportElement x="272" y="0" width="1" height="56" uuid="de3e9c39-8c43-4344-87f2-c92410176000"/>
+			</line>
+			<line>
+				<reportElement x="528" y="0" width="1" height="56" uuid="770a36c6-9639-4693-8b05-cb264e0794bb"/>
+			</line>
+			<line>
+				<reportElement x="12" y="0" width="516" height="1" uuid="8009b4be-6929-4bba-af5a-5428e3ea109d"/>
+			</line>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+</jasperReport>

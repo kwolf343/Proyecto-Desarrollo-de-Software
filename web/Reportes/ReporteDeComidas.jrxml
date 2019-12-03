@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="39de6bc7-3a27-4a57-add2-48d8dbfb611f">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="comida" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select vc.idusuario, c.nombre as comida, dc.cantidadcomida as cantidad, dc.total as total from detalleVentaComida dc, comidas c, ventaComida vc where dc.idcomida = c.idcomida and vc.idventaComida = dc.idventaComida and c.nombre = $P{comida} order by dc.total asc]]>
+	</queryString>
+	<field name="idusuario" class="java.lang.String"/>
+	<field name="comida" class="java.lang.String"/>
+	<field name="cantidad" class="java.lang.Integer"/>
+	<field name="total" class="java.lang.Double"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="11" y="0" width="529" height="79" forecolor="#0000CC" uuid="4a2dcc31-6ccd-4dd7-82cc-31d2002b2422"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="36"/>
+				</textElement>
+				<text><![CDATA[REPORTE DE VENTAS]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="15" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="66" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="11" y="6" width="136" height="60" forecolor="#000000" backcolor="#33CCFF" uuid="46cb936a-bc6c-47c2-8e60-99709f8a8e91"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[IDUSUARIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="147" y="7" width="131" height="59" forecolor="#000000" backcolor="#33CCFF" uuid="f9deb280-a815-4550-b22d-8019d2d0b5a8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[COMIDA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="278" y="6" width="128" height="60" forecolor="#000000" backcolor="#33CCFF" uuid="0d73e376-795e-41e0-a214-e6eae04c6ef4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[CANTIDAD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="406" y="6" width="132" height="60" forecolor="#000000" backcolor="#33CCFF" uuid="71c59888-2eec-40de-9df3-24aec5c254a6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[TOTAL]]></text>
+			</staticText>
+			<line>
+				<reportElement x="11" y="6" width="529" height="1" uuid="792271b0-59b3-4123-abe9-c100609a7f80"/>
+			</line>
+			<line>
+				<reportElement x="10" y="7" width="1" height="59" uuid="2d14e6db-9d4e-496f-9324-bce05c7b4922"/>
+			</line>
+			<line>
+				<reportElement x="147" y="8" width="1" height="58" uuid="1d880c1b-1ace-45fe-a75c-4d2320fdbf25"/>
+			</line>
+			<line>
+				<reportElement x="278" y="7" width="1" height="59" uuid="638a8e0f-8d0e-4836-8e80-6807e4c15011"/>
+			</line>
+			<line>
+				<reportElement x="406" y="6" width="1" height="60" uuid="d83f374b-4f57-4501-9dcd-0b7f66496ea8"/>
+			</line>
+			<line>
+				<reportElement x="539" y="7" width="1" height="59" uuid="217e3bd5-77be-45c3-8476-6c0775133eb2"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="63" splitType="Stretch">
+			<textField>
+				<reportElement x="10" y="3" width="137" height="59" uuid="924fdad0-673a-4fb8-9594-195f01c416dd"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{idusuario}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="148" y="3" width="130" height="59" uuid="21363b70-373a-444a-8766-f3dedbe5c9a5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{comida}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="279" y="3" width="127" height="60" uuid="17aebab4-51ae-4ac6-9f41-3898e8dc1139"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cantidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="407" y="3" width="131" height="59" uuid="5f5cd7d4-b4f7-4207-bebc-8d819f173a9f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="9" y="62" width="530" height="1" uuid="4a829d32-03c7-4f11-a76c-c81ced3fab8f"/>
+			</line>
+			<line>
+				<reportElement x="10" y="3" width="1" height="59" uuid="40fd361a-d813-49f2-9304-f850be6c83f6"/>
+			</line>
+			<line>
+				<reportElement x="147" y="0" width="1" height="62" uuid="c1024eeb-bbb7-43ef-9921-6ebffeca6061"/>
+			</line>
+			<line>
+				<reportElement x="278" y="0" width="1" height="62" uuid="180c45ee-2f49-4d2b-a2d0-c5ee3f92c273"/>
+			</line>
+			<line>
+				<reportElement x="539" y="0" width="1" height="63" uuid="1287f756-2a7e-4acc-9689-87020df62375"/>
+			</line>
+			<line>
+				<reportElement x="406" y="0" width="1" height="62" uuid="8ff0e041-477f-42df-a98e-f0485b9dec83"/>
+			</line>
+			<line>
+				<reportElement x="11" y="0" width="528" height="1" uuid="520efd64-f04c-43c7-9871-0a620628f6f8"/>
+			</line>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="31" splitType="Stretch"/>
+	</pageFooter>
+</jasperReport>

@@ -1,0 +1,58 @@
+.a, .b{
+    padding: 0.75%;
+    margin: 0 0.25%;
+    float: left;
+}
+.a{
+    width: 74.5%;
+    background: #fff;
+}
+.b{
+    width: 24.5%;
+    color: #fff;
+    background: rgb(43,54,86);
+}
+.comida{
+    margin-top: 2%;
+    color: #fff;
+}
+.comida ul li{
+    background: rgb(43,54,86);
+    padding: 0.75%;
+    float: left;
+    margin: 0 0.2%;
+}
+.comida2 ul li{
+    background: #fff;
+    padding: 0.75%;
+    float: left;
+    margin: 0 0.2%;
+}
+.d,.e,.f{
+    width: 13%;
+}
+.c{
+    width: 45.5%;
+}
+.comida2 .e input{
+    width: 100%;
+}
+.centro{
+    display: flex;
+    align-items: center;
+}
+.b input{
+    padding: 2%;
+}
+.contener1{
+    margin-top: 10%;
+}
+.arregle{
+    display: flex;
+    justify-content: space-between;
+}
+.busca{
+    display: flex;
+    justify-content: space-between;
+    padding: 1%;
+}

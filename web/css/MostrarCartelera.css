@@ -1,0 +1,12 @@
+.derecho{
+    background: #fff;
+}
+.informacion{
+    padding: 2%;
+}
+.aqui div:hover{
+    background: rgb(220,218,194);
+}
+#btn{
+    padding: 2%;
+}
